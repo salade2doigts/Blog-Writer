@@ -16,14 +16,14 @@ $header = null;
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Connectez vous</h5>
-            <form class="form-signin">
+            <form class="form-signin" action="index.php?action=connect" method="post">
               <div class="form-label-group">
-                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                <label for="inputEmail">Email</label>
+                <input type="text" id="inputEmail" class="form-control" placeholder="Email address" name="pseudo" required autofocus>
+                <label for="inputEmail">Pseudo</label>
               </div>
 
               <div class="form-label-group">
-                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="pass" required>
                 <label for="inputPassword">Mot de passe</label>
               </div>
 

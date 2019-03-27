@@ -33,10 +33,17 @@ try { // On essaie de faire des choses
         elseif ($_GET['action'] == 'toConnect') { // au click sur le bouton de connection
             connectPage();
 
+        }
+        elseif ($_GET['action'] == 'connect') { // authentification
+
+                authentification($_POST['pass'],$_POST['pseudo']);
+            
+
         }else {
                     // Autre exception
                     throw new Exception('Erreur');
                 }
+
     }
     else {
         listPosts();

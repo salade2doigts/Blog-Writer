@@ -3,7 +3,7 @@
 // Chargement des classes
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
-
+require_once('model/ConnectManager.php');
 function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
@@ -46,6 +46,22 @@ function nonConnectHeader(){
 
 function connectPage(){ //page de connexion
 
+
         require('view/frontend/connectView.php');
 
+}
+
+function authentification($pass,$pseudo){
+
+    $connectManager = new ConnectManager();
+
+    $passhach = password_hash($pass, PASSWORD_DEFAULT);
+    $authentificationtest = $connectManager->connexion($passhach, $pseudo);
+    
+
+    if($authentificationtest){
+
+    }
+
+    require('view/frontend/connectView.php');
 }
