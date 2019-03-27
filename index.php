@@ -37,7 +37,8 @@ try { // On essaie de faire des choses
         elseif ($_GET['action'] == 'connect') { // authentification
 
                 authentification($_POST['pass'],$_POST['pseudo']);
-            
+                navCheckState();
+                
 
         }else {
                     // Autre exception
@@ -47,7 +48,6 @@ try { // On essaie de faire des choses
     }
     else {
         listPosts();
-        nonConnectHeader(); //Affiche le header 
     }
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...

@@ -1,4 +1,6 @@
-<?php $title = 'Mon blog'; ?>
+<?php $title = 'Mon blog'; 
+require('header.php');
+?>
 
 
 

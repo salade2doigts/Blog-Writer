@@ -24,7 +24,7 @@ class PostManager
 
     private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
+        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', '');
         return $db;
     }
 }

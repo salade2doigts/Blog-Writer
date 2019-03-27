@@ -1,4 +1,6 @@
-<?php $title = htmlspecialchars($post['title']); ?>
+<?php $title = htmlspecialchars($post['title']); 
+require('header.php');
+?>
 
 <?php ob_start(); ?>
 <p><a href="index.php">Retour à la liste des billets</a></p>

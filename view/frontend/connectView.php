@@ -1,8 +1,4 @@
-<?php ob_start(); 
-
-$header = null;
-
-?>
+<?php ob_start();?>
 
 <style type="text/css">
   body{

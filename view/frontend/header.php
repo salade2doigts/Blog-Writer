@@ -1,6 +1,4 @@
-
-<?php ob_start(); ?>
-
+ 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
     <div class="container">
@@ -11,21 +9,18 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="#">Accueil
+            <a class="nav-link" href="index.php">Accueil
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Article</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="index.php?action=toConnect">Connexion</a>
-          </li>
+          </li> 
+          <!-- <?= $navState ?> en stand By--> 
         </ul>
       </div>
     </div>
   </nav>
 
-<?php $header = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+

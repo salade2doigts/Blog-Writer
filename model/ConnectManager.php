@@ -17,7 +17,7 @@ class ConnectManager
         $isPasswordCorrect = password_verify($resultat['password'],$passhach);
 
         if ($isPasswordCorrect) {
-        session_start();
+        
         $_SESSION['id'] = $resultat['id'];
         $_SESSION['pseudo'] = $pseudo;
         echo 'Vous êtes connecté !';
@@ -34,7 +34,7 @@ class ConnectManager
 
     private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
+        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
         return $db;
     }
 }

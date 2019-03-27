@@ -38,11 +38,6 @@ function addComment($postId, $author, $comment)
     }
 }
 
-function nonConnectHeader(){  
-
-        require('view/frontend/header.php');
-}
-
 
 function connectPage(){ //page de connexion
 
@@ -60,8 +55,21 @@ function authentification($pass,$pseudo){
     
 
     if($authentificationtest){
-
+        header('location: index.php');
+       
     }
 
     require('view/frontend/connectView.php');
+}
+
+function navCheckState(){
+
+    if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){ 
+    
+        require('view/frontend/navconnectView.php');
+        
+    }else{
+        require('view/frontend/navNonConnect.php');
+    }
+
 }
