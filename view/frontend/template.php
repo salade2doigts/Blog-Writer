@@ -26,8 +26,11 @@
     </head>
         
     <body>
+    	
     	<?= $header ?>
+    	
         <?= $content ?>
+
 	 
     </body>
 </html>

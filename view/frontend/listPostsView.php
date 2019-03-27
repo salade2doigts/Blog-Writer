@@ -4,32 +4,35 @@
 
 
 <?php ob_start(); ?>
-<h1>Mon super blog !</h1>
-<p>Derniers billets du blog :</p>
-
-
+<header class="text-black">
+    <div class="container text-center">
+      <h1>Billet simple pour l'Alaska</h1>
+      <p class="lead">Nouveau Roman</p>
+    </div>
+</header>
 <?php
 while ($data = $posts->fetch())
 {
 ?>
 <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-    <div class="news">
-        <h3>
-            <?= htmlspecialchars($data['title']) ?>
-            <em>le <?= $data['creation_date_fr'] ?></em>
-        </h3>
-        
-        <p>
-            <?= nl2br(htmlspecialchars($data['content'])) ?>
-            <br />
-            <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
-        </p>
+<div class="card mb-4">
+    <div class="card-body">
+            <h2 class="card-title">
+                <?= htmlspecialchars($data['title']) ?></h2>
+                
+            </h3>
+            
+            <p class="card-text">
+                <?= nl2br(htmlspecialchars($data['content'])) ?>
+                <br />
+            </p>
+        <a class="btn btn-primary" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Plus</a>
     </div>
- </div>
- </div>
- </div>   
+    <div class="card-footer text-muted">
+    <em>le <?= $data['creation_date_fr'] ?></em>
+    </div>
+</div> 
+</div> 
 <?php
 }
 $posts->closeCursor();
