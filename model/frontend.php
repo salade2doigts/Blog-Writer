@@ -35,11 +35,12 @@ function postComment($postId, $author, $comment)
     return $affectedLines;
 }
 
+
 function dbConnect()
 {
     try
     {
-        $db = new PDO('mysql:host=localhost;dbname=test2;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=test;charset=utf8', 'root', 'root');
         return $db;
     }
     catch(Exception $e)

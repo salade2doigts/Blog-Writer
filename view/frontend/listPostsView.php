@@ -1,5 +1,8 @@
 <?php $title = 'Mon blog'; ?>
 
+
+
+
 <?php ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p>Derniers billets du blog :</p>
@@ -9,6 +12,9 @@
 while ($data = $posts->fetch())
 {
 ?>
+<div class="container">
+            <div class="row">
+                <div class="col-md-12">
     <div class="news">
         <h3>
             <?= htmlspecialchars($data['title']) ?>
@@ -21,6 +27,9 @@ while ($data = $posts->fetch())
             <em><a href="index.php?action=post&amp;id=<?= $data['id'] ?>">Commentaires</a></em>
         </p>
     </div>
+ </div>
+ </div>
+ </div>   
 <?php
 }
 $posts->closeCursor();

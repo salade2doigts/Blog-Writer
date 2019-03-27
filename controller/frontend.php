@@ -21,6 +21,7 @@ function post()
     $comments = $commentManager->getComments($_GET['id']);
 
     require('view/frontend/postView.php');
+    
 }
 
 function addComment($postId, $author, $comment)
@@ -35,4 +36,16 @@ function addComment($postId, $author, $comment)
     else {
         header('Location: index.php?action=post&id=' . $postId);
     }
+}
+
+function nonConnectHeader(){  
+
+        require('view/frontend/header.php');
+}
+
+
+function connectPage(){ //page de connexion
+
+        require('view/frontend/connectView.php');
+
 }

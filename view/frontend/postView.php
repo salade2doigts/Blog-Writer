@@ -40,6 +40,7 @@ while ($comment = $comments->fetch())
 <?php
 }
 ?>
+<a href='view/frontend/EditorView.php'>Modifier</a>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

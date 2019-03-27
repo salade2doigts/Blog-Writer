@@ -30,9 +30,17 @@ try { // On essaie de faire des choses
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        elseif ($_GET['action'] == 'toConnect') { // au click sur le bouton de connection
+            connectPage();
+
+        }else {
+                    // Autre exception
+                    throw new Exception('Erreur');
+                }
     }
     else {
         listPosts();
+        nonConnectHeader(); //Affiche le header 
     }
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
