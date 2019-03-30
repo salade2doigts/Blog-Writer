@@ -59,17 +59,7 @@ function authentification($pass,$pseudo){
        
     }
 
-    require('view/frontend/connectView.php');
-}
-
-function navCheckState(){
-
-    if (isset($_SESSION['id']) AND isset($_SESSION['pseudo'])){ 
     
-        require('view/frontend/navconnectView.php');
-        
-    }else{
-        require('view/frontend/navNonConnect.php');
-    }
 
+    require('view/frontend/connectView.php');
 }

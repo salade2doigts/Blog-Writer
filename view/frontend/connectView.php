@@ -1,4 +1,7 @@
-<?php ob_start();?>
+<?php 
+$title = 'Connexion'; 
+
+ob_start();?>
 
 <style type="text/css">
   body{

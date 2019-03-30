@@ -12,7 +12,7 @@ require('header.php');
     </h3>
     
     <p>
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= nl2br(htmlspecialchars($post['post'])) ?>
     </p>
 </div>
 

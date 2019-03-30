@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 require('controller/frontend.php');
 
 try { // On essaie de faire des choses
@@ -36,14 +38,18 @@ try { // On essaie de faire des choses
         }
         elseif ($_GET['action'] == 'connect') { // authentification
 
-                authentification($_POST['pass'],$_POST['pseudo']);
-                navCheckState();
-                
+                authentification($_POST['pass'],$_POST['pseudo'])
+;                
 
-        }else {
-                    // Autre exception
-                    throw new Exception('Erreur');
-                }
+        }elseif ($_GET['action'] == 'disconnect') {
+            # code...mettre une fonctione à la place
+            $_SESSION = array();
+            session_destroy();
+            header('location: index.php');
+        }else{
+            // Autre exception
+            throw new Exception('Erreur');
+        }
 
     }
     else {
