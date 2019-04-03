@@ -1,4 +1,6 @@
-<?php $title = 'editeur'; ?>
+<?php $title = 'editeur'; 
+
+?>
 <a href='view/frontend/EditorView.php'>Modifier</a>
 <?php ob_start(); ?>
 

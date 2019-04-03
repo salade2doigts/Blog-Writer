@@ -28,7 +28,11 @@
     <body>
 
         
-        <?= $content ?>
+        <?= 
+
+        $content; 
+
+        ?>
 
 	 
     </body>

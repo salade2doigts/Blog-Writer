@@ -9,7 +9,7 @@ class ConnectManager
 
         $db = $this->dbConnect();
 
-        $req = $db->prepare('SELECT id, pseudo, password FROM users WHERE pseudo = :pseudo') or die(print_r($db->errorInfo())); 
+        $req = $db->prepare('SELECT id, role, pseudo, password FROM users WHERE pseudo = :pseudo') or die(print_r($db->errorInfo())); 
         $req->execute(array('pseudo'=> $pseudo));
         $resultat = $req->fetch();
         
@@ -19,6 +19,7 @@ class ConnectManager
         if ($isPasswordCorrect) {
         
         $_SESSION['id'] = $resultat['id'];
+        $_SESSION['role'] =$resultat['role'];
         $_SESSION['pseudo'] = $pseudo;
         echo 'Vous êtes connecté !';
 
@@ -34,7 +35,7 @@ class ConnectManager
 
     private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
         return $db;
     }
 }

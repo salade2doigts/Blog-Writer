@@ -21,7 +21,7 @@ function post()
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
-    $post2 = $post;
+   
     require('view/frontend/postView.php');
     
 }
@@ -33,7 +33,7 @@ function addComment($postId, $author, $comment)
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+        throw new Exception('Impossible d\'ajouter le commentaire !hgf');
     }
     else {
         header('Location: index.php?action=post&id=' . $postId);

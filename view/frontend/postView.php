@@ -12,16 +12,16 @@ require('header.php');
     </h3>
     
     <p>
-        <?= nl2br(htmlspecialchars($post['content'])) ?>
+        <?= nl2br(htmlspecialchars($post['post'])) ?>
     </p>
 </div>
 
 <h2>Commentaires</h2>
 
+<?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  ?>
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
     <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
+        <input type="text" id="author" name="author"  value="<?php echo $_SESSION['pseudo'] ?>" readonly/>
     </div>
     <div>
         <label for="comment">Commentaire</label><br />
@@ -33,6 +33,8 @@ require('header.php');
 </form>
 
 <?php
+}
+
 while ($comment = $comments->fetch())
 {
 ?>
@@ -41,7 +43,7 @@ while ($comment = $comments->fetch())
 <?php
 }
 ?>
-<a href='view/frontend/EditorView.php'>Modifier</a>
+
 <?php $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

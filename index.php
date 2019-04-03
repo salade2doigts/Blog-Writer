@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-require('controller/frontend.php');
+require('controller/frontend/frontend.php');
+require('controller/backend/backend.php');
 
 try { // On essaie de faire des choses
     if (isset($_GET['action'])) {
@@ -33,6 +34,7 @@ try { // On essaie de faire des choses
             }
         }
         elseif ($_GET['action'] == 'toConnect') { // au click sur le bouton de connection
+            
             connectPage();
 
         }
@@ -46,11 +48,28 @@ try { // On essaie de faire des choses
             $_SESSION = array();
             session_destroy();
             header('location: index.php');
-        }else{
+
+        }elseif ($_GET['action'] == 'dashboard') {
+            # code...mettre une fonctione à la place
+            listPostsBoard();
+                
+               
+        }elseif ($_GET['action'] == 'modifart') {
+            //if (isset($_GET['id']) && $_GET['id'] > 0) {
+               getPostBoard($_GET['id']);
+        }elseif ($_GET['action'] == 'modifPost') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                    PostModifConfirm($_POST['editor_content'],$_GET['id']);                
+            }
+            else {
+                // Autre exception
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
+    }else{
             // Autre exception
             throw new Exception('Erreur');
-        }
 
+        }
     }
     else {
         listPosts();

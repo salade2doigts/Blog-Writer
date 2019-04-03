@@ -15,10 +15,10 @@
           </li>
             <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  ?>
             <li class="nav-item">
-            <a class="nav-link" href="index.php?action=toConnect">Administration</a>
+            <a class="nav-link" href="index.php?action=dashboard">Administration</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" href="index.php?action=disconnect">Deconnexion</a>
+            <a class="nav-link" href="index.php?action=disconnect">Deconnexion</a>    
             </li>
             <?php }else{ ?>
             <li class="nav-item">
