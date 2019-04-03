@@ -7,4 +7,4 @@
 
 <?php $navState = ob_get_clean(); ?>
 
-<?php require('header.php'); ?>
+

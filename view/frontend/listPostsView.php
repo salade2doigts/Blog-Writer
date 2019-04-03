@@ -25,7 +25,7 @@ while ($data = $posts->fetch())
             </h3>
             
             <p class="card-text">
-                <?= nl2br(htmlspecialchars($data['post'])) ?>
+                <?= nl2br(htmlspecialchars($data['content'])) ?>
                 <br />
             </p>
         <a class="btn btn-primary" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Plus</a>
