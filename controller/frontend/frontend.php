@@ -21,21 +21,23 @@ function post()
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
-   
+    $comment = $comments->fetch();
+    $author = $commentManager->getAuthor($comment['id_author']);
+
     require('view/frontend/postView.php');
     
 }
 
-function addComment($postId, $author, $comment)
+function addComment($postId, $authorId, $comment)
 {
     $commentManager = new CommentManager();
 
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentManager->postComment($postId, $authorId, $comment);
 
     if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !hgf');
-    }
-    else {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+       
+    }else {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }

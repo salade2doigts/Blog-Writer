@@ -1,5 +1,6 @@
 <?php $title = htmlspecialchars($post['title']); 
 require('header.php');
+
 ?>
 
 <?php ob_start(); ?>
@@ -20,30 +21,34 @@ require('header.php');
 
 <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  ?>
 <form action="index.php?action=addComment&amp;id=<?= $post['id'] ?>" method="post">
-    <div>
-        <input type="text" id="author" name="author"  value="<?php echo $_SESSION['pseudo'] ?>" readonly/>
-    </div>
+
     <div>
         <label for="comment">Commentaire</label><br />
         <textarea id="comment" name="comment"></textarea>
     </div>
     <div>
-        <input type="submit" />
+        <input type="submit" value="Ajouter"/>
     </div>
 </form>
 
 <?php
 }
+?>
 
+
+<?php
 while ($comment = $comments->fetch())
 {
 ?>
-    <p><strong><?= htmlspecialchars($comment['author']) ?></strong> le <?= $comment['comment_date_fr'] ?></p>
+<p><strong><?= htmlspecialchars($author['pseudo']) ?></strong></p>
+     le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 <?php
 }
 ?>
 
-<?php $content = ob_get_clean(); ?>
+<?php 
+
+$content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>
