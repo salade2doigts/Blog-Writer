@@ -40,7 +40,7 @@ require('header.php');
 while ($comment = $comments->fetch())
 {
 ?>
-<p><strong><?= htmlspecialchars($author['pseudo']) ?></strong></p>
+<p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong></p>
      le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 <?php
@@ -48,7 +48,7 @@ while ($comment = $comments->fetch())
 ?>
 
 <?php 
-
+var_dump($comment['pseudo']);
 $content = ob_get_clean(); ?>
 
 <?php require('template.php'); ?>

@@ -21,8 +21,7 @@ function post()
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
-    $comment = $comments->fetch();
-    $author = $commentManager->getAuthor($comment['id_author']);
+  
 
     require('view/frontend/postView.php');
     
