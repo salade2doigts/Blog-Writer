@@ -65,7 +65,15 @@ try { // On essaie de faire des choses
                 // Autre exception
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-    }else{
+        }elseif($_GET['action'] == 'toRegister'){
+
+            registeringBoard();
+
+        }elseif($_GET['action'] == 'register'){
+
+            registeringProcess($_POST['pseudoreg'],$_POST['passreg']);
+
+        }else{
             // Autre exception
             throw new Exception('Erreur');
 

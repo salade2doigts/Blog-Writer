@@ -4,6 +4,7 @@
 require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/ConnectManager.php');
+
 function listPosts()
 {
     $postManager = new PostManager(); // Création d'un objet
@@ -21,7 +22,7 @@ function post()
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
-  
+    $comment = $comments->fetch();
 
     require('view/frontend/postView.php');
     
@@ -53,13 +54,13 @@ function authentification($pass,$pseudo){
 
     $connectManager = new ConnectManager();
 
-    $passhach = password_hash($pass, PASSWORD_DEFAULT);
-    $authentificationtest = $connectManager->connexion($passhach, $pseudo);
+   
+    $authentificationtest = $connectManager->connexion($pass, $pseudo);
     
 
     if($authentificationtest){
         header('location: index.php');
-       
+        echo 'Vous êtes connecté !';
     }
 
     
@@ -67,3 +68,22 @@ function authentification($pass,$pseudo){
     require('view/frontend/connectView.php');
 }
 
+function registeringBoard(){
+
+    require('view/frontend/registerView.php');
+
+}
+
+function registeringProcess($pseudo,$pass){
+
+    $connectManager = new ConnectManager();
+
+    $registerSet= $connectManager->registering($pseudo,$pass);
+
+    if($registerSet){
+        echo "enregistrement confirmé";
+       
+    }
+
+    require('view/frontend/registerView.php');
+}

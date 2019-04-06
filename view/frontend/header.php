@@ -20,10 +20,14 @@
             <li class="nav-item">
             <a class="nav-link" href="index.php?action=disconnect">Deconnexion</a>    
             </li>
-            <?php }else{ ?>
-            <li class="nav-item">
+            <?php }
+            elseif(!isset($_SESSION['pseudo'])&&!isset($_SESSION['id'])){ ?>
+              <li class="nav-item">
             <a class="nav-link" href="index.php?action=toConnect">Connexion</a>
             </li> 
+              <li class="nav-item">
+            <a class="nav-link" href="index.php?action=toRegister">Inscription</a>
+            </li>
             <?php
           }
           ?> 

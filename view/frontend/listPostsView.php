@@ -38,7 +38,6 @@ while ($data = $posts->fetch())
 <?php
 }
 $posts->closeCursor();
-echo $_SESSION['id'];
 ?>
 <?php $content = ob_get_clean(); ?>
 
