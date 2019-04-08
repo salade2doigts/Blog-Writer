@@ -25,14 +25,14 @@ class PostManager extends Manager
 
         return $post;
     }
-
+    /*
     public function updateComm($comment,$id){
         $db = $this->dbConnect();
         $comments = $db->prepare('UPDATE comments SET comment = ? WHERE id= ?');
         $modifComm = $comments->execute(array($comment,$id));
         return $modifComm;
 
-    }
+    }*/
 
     public function updatePost($post,$id){
         $db = $this->dbConnect();
@@ -42,9 +42,22 @@ class PostManager extends Manager
 
     }
 
-    /*private function dbConnect()
+    public function addPost($title,$post)
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
-        return $db;
-    }*/
+        $db = $this->dbConnect();
+        $posts = $db->prepare('INSERT INTO posts(title,post,post_date) VALUES(?, ?, NOW())');
+        $post = $posts->execute(array($title, $post));
+
+        return $post;
+    }
+
+    public function deletePost($postId){
+
+        $db = $this->dbConnect();
+        $posts = $db->prepare('DELETE FROM posts(title, post_date, post) WHERE id=? ');
+        $post = $posts->execute(array($postId));
+
+    }
+
+
 }

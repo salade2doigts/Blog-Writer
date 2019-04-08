@@ -19,10 +19,18 @@ require('view/frontend/header.php');
       <p class="lead">Panneau d'administration</p>
     </div>
 </header>
+
+<div class="container">
+
+
+<button class="btn btn-primary "><a href="index.php?action=toAddPost">Ajouter un article</a></button>
+
+
 <?php
 while ($data = $posts->fetch())
 {
 ?>
+
 <div class="container">
 <div class="card mb-4">
     <div class="card-body">

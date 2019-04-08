@@ -6,23 +6,7 @@ require_once("Manager.php");
 
 class CommentManager extends Manager
 {
-    /*public function getComments($postId)
-    {
-        $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT id, id_author, comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM comments WHERE post_id = ? ORDER BY comment_date DESC');
-        $comments->execute(array($postId));
-
-        return $comments;
-    }
-
-    public function getAuthor($AuthorId)
-    {
-        $db = $this->dbConnect();
-        $users = $db->prepare('SELECT pseudo FROM users WHERE id = ?');
-        $users->execute(array($AuthorId));
-        $authorU = $users->fetch();
-        return $authorU;
-    }*/
+    
 
     public function getComments($postId)
     {
@@ -42,11 +26,13 @@ class CommentManager extends Manager
         return $affectedLines;
     }
 
+    public function deleteComm($commId){
+
+        $db = $this->dbConnect();
+        $posts = $db->prepare('DELETE FROM comments(post_id, id_author, comment, report, comment_date) WHERE id=? ');
+        $post = $posts->execute(array($commId));
+
+    }
 
 
-    /*private function dbConnect()
-    {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
-        return $db;
-    }*/
 }

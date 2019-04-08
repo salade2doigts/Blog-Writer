@@ -73,6 +73,14 @@ try { // On essaie de faire des choses
 
             registeringProcess($_POST['pseudoreg'],$_POST['passreg']);
 
+        }elseif($_GET['action'] == 'toAddPost'){
+
+            AddArticleEditor();
+
+        }elseif($_GET['action'] == 'AddPostConfirm'){
+
+            AddArticleConfirm($_POST['title'],$_POST['add_content']);
+
         }else{
             // Autre exception
             throw new Exception('Erreur');
