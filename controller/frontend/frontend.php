@@ -7,7 +7,7 @@ require_once('model/ConnectManager.php');
 
 function listPosts()
 {
-    $postManager = new PostManager(); // Création d'un objet
+    $postManager = new \Said\Projet4blog\Model\PostManager();; // Création d'un objet
     $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
 
     require('view/frontend/listPostsView.php');
@@ -17,8 +17,8 @@ function listPosts()
 
 function post()
 {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
+    $postManager = new \Said\Projet4blog\Model\PostManager();;
+    $commentManager = new \Said\Projet4blog\Model\CommentManager();
 
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
@@ -30,7 +30,7 @@ function post()
 
 function addComment($postId, $authorId, $comment)
 {
-    $commentManager = new CommentManager();
+    $commentManager = new \Said\Projet4blog\Model\CommentManager();
 
     $affectedLines = $commentManager->postComment($postId, $authorId, $comment);
 
@@ -52,7 +52,7 @@ function connectPage(){ //page de connexion
 
 function authentification($pass,$pseudo){
 
-    $connectManager = new ConnectManager();
+    $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
    
     $authentificationtest = $connectManager->connexion($pass, $pseudo);
@@ -76,7 +76,7 @@ function registeringBoard(){
 
 function registeringProcess($pseudo,$pass){
 
-    $connectManager = new ConnectManager();
+    $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
     $registerSet= $connectManager->registering($pseudo,$pass);
 

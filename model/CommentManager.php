@@ -1,5 +1,10 @@
 <?php
-class CommentManager
+
+namespace Said\Projet4blog\Model;
+
+require_once("Manager.php");
+
+class CommentManager extends Manager
 {
     /*public function getComments($postId)
     {
@@ -39,9 +44,9 @@ class CommentManager
 
 
 
-    private function dbConnect()
+    /*private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
         return $db;
-    }
+    }*/
 }

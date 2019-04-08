@@ -1,5 +1,10 @@
 <?php
-class PostManager
+
+namespace Said\Projet4blog\Model;
+
+require_once("Manager.php");
+
+class PostManager extends Manager
 {
 
  
@@ -37,9 +42,9 @@ class PostManager
 
     }
 
-    private function dbConnect()
+    /*private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
         return $db;
-    }
+    }*/
 }

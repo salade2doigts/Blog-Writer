@@ -1,5 +1,10 @@
 <?php
-class ConnectManager
+
+namespace Said\Projet4blog\Model;
+
+require_once("Manager.php");
+
+class ConnectManager extends Manager
 {
 
     
@@ -49,10 +54,10 @@ class ConnectManager
     }    
 
 
-    private function dbConnect()
+    /*private function dbConnect()
     {
-        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', '');
+        $db = new PDO('mysql:host=localhost;dbname=blog;charset=utf8', 'root', 'root');
         return $db;
-    }
+    }*/
 }
 
