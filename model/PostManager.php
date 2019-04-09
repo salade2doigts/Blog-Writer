@@ -34,10 +34,10 @@ class PostManager extends Manager
 
     }*/
 
-    public function updatePost($post,$id){
+    public function updatePost($post,$title,$id){
         $db = $this->dbConnect();
-        $posts = $db->prepare('UPDATE posts SET post = ? WHERE id= ?');
-        $modifPost= $posts->execute(array($post,$id));
+        $posts = $db->prepare('UPDATE posts SET post = ?,title = ?  WHERE id= ?');
+        $modifPost= $posts->execute(array($post,$title,$id));
         return $modifPost;
 
     }
@@ -54,7 +54,7 @@ class PostManager extends Manager
     public function deletePost($postId){
 
         $db = $this->dbConnect();
-        $posts = $db->prepare('DELETE FROM posts(title, post_date, post) WHERE id=? ');
+        $posts = $db->prepare('DELETE FROM posts WHERE id = ?');
         $post = $posts->execute(array($postId));
 
     }

@@ -12,7 +12,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
     <?php ob_start(); ?>
 
-    <form class="formadm" action="index.php?action=AddPostConfirm" method="POST" >
+    <form class="formadm" action="index.php?action=addPostConfirm" method="POST" >
       
 
           <input type="text" name="title"> 

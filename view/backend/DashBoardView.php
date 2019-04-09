@@ -23,26 +23,27 @@ require('view/frontend/header.php');
 <div class="container">
 
 
-<button class="btn btn-primary "><a href="index.php?action=toAddPost">Ajouter un article</a></button>
+    <button class="btn btn-primary "><a href="index.php?action=toAddPost">Ajouter un article</a></button>
 
 
-<?php
-while ($data = $posts->fetch())
-{
-?>
+    <?php
+    while ($data = $posts->fetch())
+    {
+    ?>
 
-<div class="container">
-<div class="card mb-4">
-    <div class="card-body">
-            <p class="card-title">
-                <?= htmlspecialchars($data['title']) ?></p>
-        <a href="index.php?action=modifart&amp;id=<?= $data['id'] ?>">Modifier l'article</a>
-    </div>
-    <div class="card-footer text-muted">
-    <em>le <?= $data['creation_date_fr'] ?></em>
-    </div>
-</div> 
-</div> 
+
+        <div class="card mb-4">
+            <div class="card-body">
+                    <p class="card-title">
+                        <?= htmlspecialchars($data['title']) ?></p>
+                <a href="index.php?action=modifArt&amp;id=<?= $data['id'] ?>">Consulter ou Modifier l'article</a></br>
+                <a href="index.php?action=deletArt&amp;id=<?= $data['id'] ?>">Supprimer l'article</a>
+            </div>
+            <div class="card-footer text-muted">
+            <em>le <?= $data['creation_date_fr'] ?></em>
+            </div>
+        </div> 
+
 <?php
 }
 $posts->closeCursor();
@@ -60,3 +61,4 @@ $posts->closeCursor();
     echo 'Vous vous êtes egarés';
 }
     ?>
+</div> 

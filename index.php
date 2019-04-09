@@ -54,12 +54,12 @@ try { // On essaie de faire des choses
             listPostsBoard();
                 
                
-        }elseif ($_GET['action'] == 'modifart') {
+        }elseif ($_GET['action'] == 'modifArt') {
             //if (isset($_GET['id']) && $_GET['id'] > 0) {
                getPostBoard($_GET['id']);
         }elseif ($_GET['action'] == 'modifPost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    PostModifConfirm($_POST['editor_content'],$_GET['id']);                
+                    PostModifConfirm($_POST['editor_content'],$_POST['title'],$_GET['id']);                
             }
             else {
                 // Autre exception
@@ -77,10 +77,13 @@ try { // On essaie de faire des choses
 
             AddArticleEditor();
 
-        }elseif($_GET['action'] == 'AddPostConfirm'){
+        }elseif($_GET['action'] == 'addPostConfirm'){
 
-            AddArticleConfirm($_POST['title'],$_POST['add_content']);
+            addArticleConfirm($_POST['title'],$_POST['add_content']);
 
+        }elseif($_GET['action'] == 'deletArt'){
+
+            deleteArticle($_GET['id']);
         }else{
             // Autre exception
             throw new Exception('Erreur');

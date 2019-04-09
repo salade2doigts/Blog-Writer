@@ -39,9 +39,9 @@ function addPostEditor($id)
     require('view/backend/AddEditorView.php');
 }
 
-function PostModifConfirm($post,$id){
+function PostModifConfirm($post,$title,$id){
     $PostManager = new \Said\Projet4blog\Model\PostManager();;
-    $UpPost = $PostManager->updatePost($post,$id);
+    $UpPost = $PostManager->updatePost($post,$title,$id);
     
     if ($UpPost === false) {
         throw new Exception('Impossible de modifier l\'article !');
@@ -55,7 +55,7 @@ function PostModifConfirm($post,$id){
 
 }
 
-function AddArticleEditor(){
+function addArticleEditor(){
 
 
 	require('view/backend/AddEditorView.php');
@@ -64,7 +64,14 @@ function AddArticleEditor(){
 function AddArticleConfirm($title,$post){
 
 	$PostManager = new \Said\Projet4blog\Model\PostManager();;
-	$UpPost = $PostManager->addPost($title,$post);
+	$upPost = $PostManager->addPost($title,$post);
+
+	header('location: index.php?action=dashboard');
+}
+
+function deleteArticle($id){
+	$PostManager = new \Said\Projet4blog\Model\PostManager();;
+	$delPost= $PostManager->deletePost($id);
 
 	header('location: index.php?action=dashboard');
 }

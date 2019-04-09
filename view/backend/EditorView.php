@@ -3,6 +3,7 @@
 if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){ 
   if($_SESSION['role'] == 1){
     require('view/frontend/header.php');
+
     ?>
     <style type="text/css">
         .formadm{
@@ -14,17 +15,16 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
     <?php ob_start(); ?>
 
     <form class="formadm" action="index.php?action=modifPost&amp;id=<?= $post['id'] ?>" method="POST" >
+
+
+      <input type="text" value= '<?php echo htmlspecialchars($post['title']) ?>' name='title'>
+
       <textarea name="editor_content" id="froala-editor">
-      	  <h3>
-            <?= htmlspecialchars($post['title']) ?>
-        
-        </h3>
-        
-        <p>
+      	  
             <?= nl2br(htmlspecialchars($post['post'])) ?>
-        </p>
+       
       </textarea>
-      <button>Submit</button>
+      <button>Valider la modification</button>
     </form>
      
     <script>
