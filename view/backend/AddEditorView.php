@@ -9,7 +9,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
             margin-top: 70px;
         }
     </style>
-
+<div class="container">
     <?php ob_start(); ?>
 
     <form class="formadm" action="index.php?action=addPostConfirm" method="POST" >
@@ -22,7 +22,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
         </textarea>
       <button>Submit</button>
     </form>
-     
+    </div>     
     <script>
       $(function() {
         $('#froala-editor').froalaEditor({
@@ -46,4 +46,6 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
 <?php  
 }
+
+
 ?>

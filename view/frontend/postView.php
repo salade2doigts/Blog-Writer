@@ -45,10 +45,9 @@ while ($comment = $comments->fetch())
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
 <?php
 }
-?>
 
-<?php 
-var_dump($comment['pseudo']);
-$content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+
+$content = ob_get_clean(); 
+
+ require('template.php'); ?>

@@ -3,7 +3,7 @@
 
 // Chargement des classes
 require_once('model/PostManager.php');
-
+require_once('model/CommentManager.php');
 
 
 function listPostsBoard()
@@ -74,4 +74,21 @@ function deleteArticle($id){
 	$delPost= $PostManager->deletePost($id);
 
 	header('location: index.php?action=dashboard');
+}
+
+function listComms(){
+
+	
+    $commentManager = new \Said\Projet4blog\Model\CommentManager();
+    $commentsB = $commentManager->getCommentsBoard();
+    
+    require('view/backend/DashBoardViewComm.php');
+
+}
+
+function deleteComment($id){
+	$commentManager = new \Said\Projet4blog\Model\CommentManager();;
+	$delComm= $commentManager->deleteComm($id);
+
+		header('location: index.php?action=toCommControl');
 }

@@ -84,6 +84,14 @@ try { // On essaie de faire des choses
         }elseif($_GET['action'] == 'deletArt'){
 
             deleteArticle($_GET['id']);
+
+        }elseif($_GET['action'] == 'toCommControl'){
+            listComms();
+                
+        }elseif($_GET['action'] == 'delComm'){
+            deleteComment($_GET['id']);
+
+                
         }else{
             // Autre exception
             throw new Exception('Erreur');

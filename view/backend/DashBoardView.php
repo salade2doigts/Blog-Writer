@@ -22,7 +22,7 @@ require('view/frontend/header.php');
 
 <div class="container">
 
-
+    <button class="btn btn-primary "><a href='index.php?action=toCommControl'>Commentaires</a></button><br>
     <button class="btn btn-primary "><a href="index.php?action=toAddPost">Ajouter un article</a></button>
 
 
@@ -62,3 +62,5 @@ $posts->closeCursor();
 }
     ?>
 </div> 
+
+

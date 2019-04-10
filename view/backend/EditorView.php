@@ -11,7 +11,8 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
         }
     </style>
 
-    <a href='view/frontend/EditorView.php'>Modifier</a>
+    <div class="container">
+
     <?php ob_start(); ?>
 
     <form class="formadm" action="index.php?action=modifPost&amp;id=<?= $post['id'] ?>" method="POST" >
@@ -26,7 +27,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
       </textarea>
       <button>Valider la modification</button>
     </form>
-     
+     </div>
     <script>
       $(function() {
         $('#froala-editor').froalaEditor({
