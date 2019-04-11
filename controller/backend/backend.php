@@ -76,10 +76,12 @@ function deleteArticle($id){
 	header('location: index.php?action=dashboard');
 }
 
+
+
 function listComms(){
 
-	
-    $commentManager = new \Said\Projet4blog\Model\CommentManager();
+	$commentManager = new \Said\Projet4blog\Model\CommentManager();
+    $commentsReport = $commentManager->getCommentsReportBoard();
     $commentsB = $commentManager->getCommentsBoard();
     
     require('view/backend/DashBoardViewComm.php');
@@ -92,3 +94,4 @@ function deleteComment($id){
 
 		header('location: index.php?action=toCommControl');
 }
+

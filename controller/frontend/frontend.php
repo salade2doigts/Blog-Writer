@@ -87,3 +87,12 @@ function registeringProcess($pseudo,$pass){
 
     require('view/frontend/registerView.php');
 }
+
+
+function signalComm($id){
+
+    $commentManager = new \Said\Projet4blog\Model\CommentManager();
+    $report = $commentManager->reportComm($id);
+
+    header('Location: index.php?action=post&id=' . $postId);
+}

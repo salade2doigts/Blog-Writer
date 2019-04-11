@@ -11,7 +11,7 @@ class CommentManager extends Manager
     public function getComments($postId)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT users.pseudo, comments.comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM users, comments WHERE comments.id_author = users.id AND post_id = ?');
+        $comments = $db->prepare('SELECT comments.id, users.pseudo, comments.comment, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM users, comments WHERE comments.id_author = users.id AND post_id = ?');
         $comments->execute(array($postId));
 
         return $comments;
@@ -20,7 +20,15 @@ class CommentManager extends Manager
     public function getCommentsBoard()
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('SELECT users.pseudo, comments.comment, comments.id, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM users, comments WHERE comments.id_author = users.id');
+        $comments = $db->prepare('SELECT users.pseudo, comments.comment, comments.id, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM users, comments WHERE comments.id_author = users.id AND report = 0');
+         $comments->execute(array());
+        return $comments;
+    }
+
+    public function getCommentsReportBoard()
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare('SELECT users.pseudo, comments.comment, comments.id, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') AS comment_date_fr FROM users, comments WHERE comments.id_author = users.id AND report = 1');
          $comments->execute(array());
         return $comments;
     }
@@ -28,7 +36,7 @@ class CommentManager extends Manager
     public function postComment($postId, $authorId, $comment)
     {
         $db = $this->dbConnect();
-        $comments = $db->prepare('INSERT INTO comments(post_id, id_author, comment, report, comment_date) VALUES(?, ?, ?, 1, NOW())');
+        $comments = $db->prepare('INSERT INTO comments(post_id, id_author, comment, report, comment_date) VALUES(?, ?, ?, 0, NOW())');
         $affectedLines = $comments->execute(array($postId, $authorId, $comment));
 
         return $affectedLines;
@@ -43,5 +51,13 @@ class CommentManager extends Manager
         return $comm;
     }
 
+    public function reportComm($id){
+
+        $db = $this->dbConnect();
+        $comms= $db->prepare('UPDATE comments SET report = 1 WHERE id=?');
+        $comm = $comms->execute(array($id));
+        return $comm;
+        
+    }
 
 }

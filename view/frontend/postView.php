@@ -16,7 +16,7 @@ require('header.php');
         <?= nl2br(htmlspecialchars($post['post'])) ?>
     </p>
 </div>
-
+<div class="container">
 <h2>Commentaires</h2>
 
 <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  ?>
@@ -43,6 +43,9 @@ while ($comment = $comments->fetch())
 <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong></p>
      le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
+    <a class="btn btn-danger" href="index.php?action=signal&amp;id=<?=$comment['id']?>">Signaler<a>
+
+   
 <?php
 }
 
@@ -51,3 +54,4 @@ while ($comment = $comments->fetch())
 $content = ob_get_clean(); 
 
  require('template.php'); ?>
+ </div>

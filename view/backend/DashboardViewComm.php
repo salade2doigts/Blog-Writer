@@ -19,25 +19,49 @@ require('view/frontend/header.php');
 <header class="text-black">
     <div class="container text-center">
 
-      <p class="lead">Panneau d'administration</p>
+      <h2 class="lead">Panneau d'administration</h2>
     </div>
 </header>
 
 <div class="container">
 
+<div>
+ <h3>Commentaires signalés</h3>
 
+<?php
+while ($commentR = $commentsReport->fetch())
+{
+?>
+        <div class="card">
+<p><strong><?= htmlspecialchars($commentR['pseudo']) ?></strong></p>
+     le <?= $commentR['comment_date_fr'] ?></p>
+    <p><?= nl2br(htmlspecialchars($commentR['comment'])) ?></p>
+    <p><?= nl2br(htmlspecialchars($commentR['id'])) ?></p>
+    <a href="index.php?action=delComm&amp;id=<?= $commentR['id'] ?>">Supprimer le commentaire</a>
+    </div>
+
+
+<?php
+} ?>
+
+</div>
+
+<div>
+<h3>Autres Commentaires</h3>
   
 <?php
 while ($comment = $commentsB->fetch())
 {
 ?>
-        <div>
+        <div class="card">
 <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong></p>
      le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
     <p><?= nl2br(htmlspecialchars($comment['id'])) ?></p>
     <a href="index.php?action=delComm&amp;id=<?= $comment['id'] ?>">Supprimer le commentaire</a>
-</div>
+    </div>
+
+
 <?php
 }
 
@@ -56,6 +80,7 @@ require('view/frontend/template.php');
     echo 'Vous vous êtes egarés';
 }
     ?>
+    </div>
 </div> 
 
 

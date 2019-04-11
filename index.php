@@ -86,10 +86,16 @@ try { // On essaie de faire des choses
             deleteArticle($_GET['id']);
 
         }elseif($_GET['action'] == 'toCommControl'){
+
             listComms();
-                
+            
         }elseif($_GET['action'] == 'delComm'){
             deleteComment($_GET['id']);
+
+                
+        }elseif($_GET['action'] == 'signal'){
+
+            signalComm($_GET['id']);
 
                 
         }else{
