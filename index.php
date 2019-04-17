@@ -95,7 +95,7 @@ try { // On essaie de faire des choses
                 
         }elseif($_GET['action'] == 'signal'){
 
-            signalComm($_GET['id']);
+            signalComm($_GET['id'],$_GET['idComm']);
 
                 
         }else{

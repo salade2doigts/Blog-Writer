@@ -13,15 +13,16 @@
               <span class="sr-only">(current)</span>
             </a>
           </li>
-            <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  ?>
+            <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  
+            if( $_SESSION['role'] == 1 ){  ?>
             <li class="nav-item">
             <a class="nav-link" href="index.php?action=dashboard">Administration</a>
             </li>
+            <?php } ?>
             <li class="nav-item">
             <a class="nav-link" href="index.php?action=disconnect">Deconnexion</a>    
             </li>
-            <?php }
-            elseif(!isset($_SESSION['pseudo'])&&!isset($_SESSION['id'])){ ?>
+            <?php }elseif(!isset($_SESSION['pseudo'])&&!isset($_SESSION['id'])){ ?>
               <li class="nav-item">
             <a class="nav-link" href="index.php?action=toConnect">Connexion</a>
             </li> 
@@ -35,6 +36,3 @@
       </div>
     </div>
   </nav>
-
-
-

@@ -20,7 +20,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
       <input type="text" value= '<?php echo htmlspecialchars($post['title']) ?>' name='title'>
 
-      <textarea name="editor_content" id="froala-editor">
+      <textarea name="editor_content" id="mytextarea">
       	  
             <?= nl2br(htmlspecialchars($post['post'])) ?>
        
@@ -28,13 +28,6 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
       <button>Valider la modification</button>
     </form>
      </div>
-    <script>
-      $(function() {
-        $('#froala-editor').froalaEditor({
-          toolbarSticky: false
-        })
-      });
-    </script>
 
     <?php $content = ob_get_clean(); ?>
 

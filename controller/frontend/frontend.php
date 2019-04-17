@@ -89,10 +89,10 @@ function registeringProcess($pseudo,$pass){
 }
 
 
-function signalComm($id){
+function signalComm($postId,$id){
 
     $commentManager = new \Said\Projet4blog\Model\CommentManager();
     $report = $commentManager->reportComm($id);
 
-    header("location:javascript://history.go(-1)");
+    header('location:index.php?action=post&id=' . $postId);
 }

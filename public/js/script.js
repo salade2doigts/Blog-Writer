@@ -21,3 +21,10 @@ form.addEventListener("submit", function (e) {
     document.getElementById("infoMdp").textContent = message;
     e.preventDefault();
 });
+
+
+document.getElementById("report").addEventListener('click', function(e){
+
+		document.getElementById("infoSign").textContent = 'Commentaire Signalé!';
+		console.log("clic");
+})
