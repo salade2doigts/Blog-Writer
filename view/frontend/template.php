@@ -18,7 +18,8 @@
   		<script>
   		tinymce.init({
     	selector: '#mytextarea',
-    	mode : "textareas"
+    	mode : "textareas",
+	toolbar: "forecolor backcolor"
   		});
   		</script>
     </head>
