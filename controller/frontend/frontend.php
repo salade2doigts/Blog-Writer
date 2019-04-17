@@ -94,5 +94,5 @@ function signalComm($id){
     $commentManager = new \Said\Projet4blog\Model\CommentManager();
     $report = $commentManager->reportComm($id);
 
-    header('Location: index.php?action=post&id=' . $postId);
+    header("location:javascript://history.go(-1)");
 }

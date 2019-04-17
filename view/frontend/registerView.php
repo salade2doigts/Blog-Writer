@@ -16,7 +16,7 @@ ob_start(); ?>
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Enregistrez vous</h5>
-            <form class="form-signin" action="index.php?action=register" method="post">
+            <form id="formreg" class="form-signin" action="index.php?action=register" method="post">
               <div class="form-label-group">
                 <input type="text" id="inputPseudo" class="form-control" placeholder="Pseudo" name="pseudoreg" required autofocus>
                 <label for="inputPseudo">Pseudo</label>
@@ -24,17 +24,17 @@ ob_start(); ?>
 
               <div class="form-label-group">
                 <input type="password" id="registPassword" class="form-control" placeholder="Mot de passe" name="passreg" required>
-                <label for="inputPassword">Mot de passe</label>
+                <label for="inputPassword"></label>
               </div>
               <div class="form-label-group">
-                <input type="password" id="registPassword2" class="form-control" placeholder="Password" required>
-                <label for="inputPassword">Retaper votre mot de passe</label>
+                <input type="password" id="registPassword2" class="form-control" placeholder="Password" name="passreg2" required>
+                <label for="inputPassword"></label>
               </div>
            
-              <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Inscription</button>     
+              <input class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" value ="INSCRIPTION">    
               
             </form>
-
+            <p id="infoMdp"></p>
           </div>
         </div>
       </div>

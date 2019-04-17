@@ -85,7 +85,7 @@ function listComms(){
     $commentsB = $commentManager->getCommentsBoard();
     
     require('view/backend/DashBoardViewComm.php');
-
+    
 }
 
 function deleteComment($id){
