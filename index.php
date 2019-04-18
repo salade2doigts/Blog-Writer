@@ -7,11 +7,11 @@ require('controller/backend/backend.php');
 try { // On essaie de faire des choses
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
-            listPosts();
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $listPosts = $controllerFront->listPosts();
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-
                 $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
                 $postP= $controllerFront->post();
             }
@@ -53,15 +53,22 @@ try { // On essaie de faire des choses
 
         }elseif ($_GET['action'] == 'dashboard') {
             # code...mettre une fonctione à la place
-            listPostsBoard();
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $listPostsBoard= $controllerBack->listPostsBoard();
                 
                
         }elseif ($_GET['action'] == 'modifArt') {
-            //if (isset($_GET['id']) && $_GET['id'] > 0) {
-               getPostBoard($_GET['id']);
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $getPostBoard = $controllerBack->getPostBoard($_GET['id']);
+            }else {
+                // Autre exception
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
         }elseif ($_GET['action'] == 'modifPost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                    PostModifConfirm($_POST['editor_content'],$_POST['title'],$_GET['id']);                
+                $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+                $PostModifConfirm = $controllerBack->PostModifConfirm($_POST['editor_content'],$_POST['title'],$_GET['id']);                
             }
             else {
                 // Autre exception
@@ -76,29 +83,42 @@ try { // On essaie de faire des choses
             $registeringProcess= $controllerFront->registeringProcess($_POST['pseudoreg'],$_POST['passreg']);
 
         }elseif($_GET['action'] == 'toAddPost'){
-
-            AddArticleEditor();
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $AddArticleEditor = $controllerBack->AddArticleEditor();
 
         }elseif($_GET['action'] == 'addPostConfirm'){
-
-            addArticleConfirm($_POST['title'],$_POST['add_content']);
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $addArticleConfirm = $controllerBack->addArticleConfirm($_POST['title'],$_POST['add_content']);
 
         }elseif($_GET['action'] == 'deletArt'){
-
-            deleteArticle($_GET['id']);
-
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $deleteArticle = $controllerBack->deleteArticle($_GET['id']);
+            }else {
+                // Autre exception
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
         }elseif($_GET['action'] == 'toCommControl'){
-
-            listComms();
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $listComms= $controllerBack->listComms();
             
         }elseif($_GET['action'] == 'delComm'){
-            deleteComment($_GET['id']);
-
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+            $controllerBack = new \Said\Projet4blog\controller\backend\ControllerBack();
+            $deleteComment = $controllerBack->deleteComment($_GET['id']);
+            }else {
+                // Autre exception
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
                 
         }elseif($_GET['action'] == 'signal'){
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
             $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
             $signalComm = $controllerFront->signalComm($_GET['id'],$_GET['idComm']);
-
+            }else {
+                // Autre exception
+                throw new Exception('Aucun identifiant de billet envoyé');
+            }
                 
         }else{
             // Autre exception

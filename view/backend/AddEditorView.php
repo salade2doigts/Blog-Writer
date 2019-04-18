@@ -17,19 +17,12 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
           <input type="text" name="title"> 
   
-        <textarea name="add_content" id="froala-editor">
+        <textarea name="add_content" id="mytextarea">
         
         </textarea>
-      <button>Submit</button>
+      <button>Ajouter l'article</button>
     </form>
     </div>     
-    <script>
-      $(function() {
-        $('#froala-editor').froalaEditor({
-          toolbarSticky: false
-        })
-      });
-    </script>
 
     <?php $content = ob_get_clean(); ?>
 

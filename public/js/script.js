@@ -5,7 +5,8 @@ var form = document.getElementById('formreg');
 form.addEventListener("submit", function (e) {
     var mdp1 = form.elements.passreg.value;
     var mdp2 = form.elements.passreg2.value;
-    var message = "Mots de passe OK";
+    var message = "Votre Compte est enregistré avec succès!";
+
     if (mdp1 === mdp2) {
         if (mdp1.length >= 6) {
             var regexMdp = /\d+/;
@@ -19,7 +20,7 @@ form.addEventListener("submit", function (e) {
         message = "Erreur : les mots de passe saisis sont différents";
     }
     document.getElementById("infoMdp").textContent = message;
-    e.preventDefault();
+   
 });
 
 
