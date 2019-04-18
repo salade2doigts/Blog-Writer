@@ -24,7 +24,7 @@ require('view/frontend/header.php');
 </header>
 
 <div class="container">
-
+<button class="btn btn-info btn-lg btn-block"><a href='index.php?action=dashboard'>Gestion des articles</a></button><br>
 <div>
  <h3>Commentaires signalés</h3>
 

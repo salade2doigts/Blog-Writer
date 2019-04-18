@@ -14,11 +14,10 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
     <form class="formadm" action="index.php?action=addPostConfirm" method="POST" >
       
-
-          <input type="text" name="title"> 
-  
-        <textarea name="add_content" id="mytextarea">
-        
+        <p>Titre de l'article</p>
+        <input type="text" name="title" required> 
+        <p>Contenu :</p>
+        <textarea name="add_content" id="mytextarea">      
         </textarea>
       <button>Ajouter l'article</button>
     </form>

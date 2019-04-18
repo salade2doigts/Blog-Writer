@@ -22,8 +22,8 @@ require('view/frontend/header.php');
 
 <div class="container">
 
-    <button class="btn btn-primary "><a href='index.php?action=toCommControl'>Commentaires</a></button><br>
-    <button class="btn btn-primary "><a href="index.php?action=toAddPost">Ajouter un article</a></button>
+    <button class="btn btn-info btn-lg btn-block"><a href='index.php?action=toCommControl'>Modérations des Commentaires</a></button><br>
+    <button class="btn btn-primary" id="addart"><a href="index.php?action=toAddPost">Ajouter un article</a></button>
 
 
     <?php
@@ -48,6 +48,7 @@ require('view/frontend/header.php');
 }
 $posts->closeCursor();
 ?>
+</div>
 <?php $content = ob_get_clean(); ?>
 
 <?php require('view/frontend/template.php');
@@ -61,6 +62,8 @@ $posts->closeCursor();
     echo 'Vous vous êtes egarés';
 }
     ?>
-</div> 
+ 
+
+
 
 

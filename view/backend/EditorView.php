@@ -17,9 +17,9 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
     <form class="formadm" action="index.php?action=modifPost&amp;id=<?= $post['id'] ?>" method="POST" >
 
-
-      <input type="text" value= '<?php echo htmlspecialchars($post['title']) ?>' name='title'>
-
+      <p>Titre de l'article</p>
+      <input type="text" value= '<?php echo htmlspecialchars($post['title']) ?>' name='title' required>
+      <p>Contenu</p>
       <textarea name="editor_content" id="mytextarea">
       	  
             <?= nl2br(htmlspecialchars($post['post'])) ?>

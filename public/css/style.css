@@ -46,6 +46,17 @@ header {
     margin-left: auto;
 }
 
+#card-texto:nth-child(2n){
+
+  display: block;
+  width: 95%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+
+
 .card-signin {
   border: 0;
   border-radius: 1rem;
@@ -142,3 +153,6 @@ header {
   margin-top: 100px;
 }
 
+#addart{
+  margin: 15px;
+}

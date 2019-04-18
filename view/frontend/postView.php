@@ -45,13 +45,12 @@ while ($comment = $comments->fetch())
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
     <a class="btn btn-danger" href="index.php?action=signal&amp;id=<?=$post['id']?>&amp;idComm=<?=$comment['id']?>">Signaler<a> <p id="infoMdp"></p>
 
-   
+  
 <?php
 }
 
-
-var_dump($_GET['id']);
+?></div> <?php
 $content = ob_get_clean(); 
 
- require('template.php'); ?>
- </div>
+ require('template.php');
+ require('footer.php'); ?>

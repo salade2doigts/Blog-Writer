@@ -27,7 +27,7 @@ ob_start(); ?>
                 <label for="inputPassword"></label>
               </div>
               <div class="form-label-group">
-                <input type="password" id="registPassword2" class="form-control" placeholder="Password" name="passreg2" required>
+                <input type="password" id="registPassword2" class="form-control" placeholder="Retaper votre mot de passe" name="passreg2" required>
                 <label for="inputPassword"></label>
               </div>
            

@@ -12,33 +12,43 @@ require('header.php');
       <p class="lead">Nouveau Roman</p>
     </div>
 </header>
+
+<div class="container">
 <?php
 while ($data = $posts->fetch())
 {
 ?>
-<div class="container">
+
 <div class="card mb-4">
     <div class="card-body">
-            <h2 class="card-title">
+            <h2 class="card-title font-weight-bold">
                 <?= htmlspecialchars($data['title']) ?></h2>
                 
             </h3>
-            
-            <p class="card-text">
+            <div id="card-texto">
+            <p class="card-text" >
                 <?= html_entity_decode(nl2br(htmlspecialchars($data['post']))) ?>
-                <br />
+          
+                <a class="btn btn-primary" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
             </p>
-        <a class="btn btn-primary" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Plus</a>
+            
+            </div>
+
     </div>
     <div class="card-footer text-muted">
     <em>le <?= $data['creation_date_fr'] ?></em>
     </div>
-</div> 
-</div> 
+    </div> 
+
 <?php
 }
-$posts->closeCursor();
-?>
-<?php $content = ob_get_clean(); ?>
 
-<?php require('template.php'); ?>
+$posts->closeCursor();
+
+?>
+</div>
+<?php $content = ob_get_clean(); 
+
+require('template.php');
+require('footer.php'); 
+?>
