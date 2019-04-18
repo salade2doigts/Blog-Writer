@@ -11,7 +11,9 @@ try { // On essaie de faire des choses
         }
         elseif ($_GET['action'] == 'post') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+
+                $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+                $postP= $controllerFront->post();
             }
             else {
                 // Erreur ! On arrête tout, on envoie une exception, donc au saute directement au catch
@@ -21,7 +23,8 @@ try { // On essaie de faire des choses
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_SESSION['id'], $_POST['comment']);
+                    $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+                    $addComments = $controllerFront->addComment($_GET['id'], $_SESSION['id'], $_POST['comment']);
                 }
                 else {
                     // Autre exception
@@ -34,14 +37,13 @@ try { // On essaie de faire des choses
             }
         }
         elseif ($_GET['action'] == 'toConnect') { // au click sur le bouton de connection
-            
-            connectPage();
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $connectPage= $controllerFront->connectPage();
 
         }
         elseif ($_GET['action'] == 'connect') { // authentification
-
-                authentification($_POST['pass'],$_POST['pseudo'])
-;                
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $authentification = $controllerFront->authentification($_POST['pass'],$_POST['pseudo']);                
 
         }elseif ($_GET['action'] == 'disconnect') {
             # code...mettre une fonctione à la place
@@ -66,12 +68,12 @@ try { // On essaie de faire des choses
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }elseif($_GET['action'] == 'toRegister'){
-
-            registeringBoard();
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $registeringBoard = $controllerFront->registeringBoard();
 
         }elseif($_GET['action'] == 'register'){
-
-            registeringProcess($_POST['pseudoreg'],$_POST['passreg']);
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $registeringProcess= $controllerFront->registeringProcess($_POST['pseudoreg'],$_POST['passreg']);
 
         }elseif($_GET['action'] == 'toAddPost'){
 
@@ -94,8 +96,8 @@ try { // On essaie de faire des choses
 
                 
         }elseif($_GET['action'] == 'signal'){
-
-            signalComm($_GET['id'],$_GET['idComm']);
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $signalComm = $controllerFront->signalComm($_GET['id'],$_GET['idComm']);
 
                 
         }else{
@@ -105,7 +107,9 @@ try { // On essaie de faire des choses
         }
     }
     else {
-        listPosts();
+
+        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+        $listPosts = $controllerFront->listPosts();
     }
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
