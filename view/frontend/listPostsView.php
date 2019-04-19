@@ -1,11 +1,12 @@
 <?php $title = 'Mon blog'; 
-require('header.php');
+
 ?>
 
 
 
 
-<?php ob_start(); ?>
+<?php ob_start();
+require('header.php'); ?>
 <header class="text-black">
     <div class="container text-center">
       <h1>Billet simple pour l'Alaska</h1>

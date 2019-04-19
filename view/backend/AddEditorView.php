@@ -14,9 +14,9 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
     <form class="formadm" action="index.php?action=addPostConfirm" method="POST" >
       
-        <p>Titre de l'article</p>
+        <p class="font-weight-bold" >Titre de l'article :</p>
         <input type="text" name="title" required> 
-        <p>Contenu :</p>
+        <p class="font-weight-bold" >Contenu :</p>
         <textarea name="add_content" id="mytextarea">      
         </textarea>
       <button>Ajouter l'article</button>

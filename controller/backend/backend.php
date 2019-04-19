@@ -24,7 +24,7 @@ class ControllerBack{
 
     public function edition($id)
     {
-        $postManager2 = new \Said\Projet4blog\Model\PostManager();;
+        $postManager2 = new \Said\Projet4blog\Model\PostManager();
      
         $post = $postManager2->getPost($id);
 
@@ -33,7 +33,7 @@ class ControllerBack{
 
     public function addPostEditor($id)
     {
-        $postManager2 = new \Said\Projet4blog\Model\PostManager();;
+        $postManager2 = new \Said\Projet4blog\Model\PostManager();
      
         $post = $postManager2->getPost($id);
 
@@ -41,7 +41,7 @@ class ControllerBack{
     }
 
     public function PostModifConfirm($post,$title,$id){
-        $PostManager = new \Said\Projet4blog\Model\PostManager();;
+        $PostManager = new \Said\Projet4blog\Model\PostManager();
         $UpPost = $PostManager->updatePost($post,$title,$id);
         
         if ($UpPost === false) {
@@ -64,16 +64,18 @@ class ControllerBack{
 
     public function AddArticleConfirm($title,$post){
 
-    	$PostManager = new \Said\Projet4blog\Model\PostManager();;
+    	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$upPost = $PostManager->addPost($title,$post);
 
     	header('location: index.php?action=dashboard');
     }
 
     public function deleteArticle($id){
-    	$PostManager = new \Said\Projet4blog\Model\PostManager();;
+    	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$delPost= $PostManager->deletePost($id);
-
+        
+        $commentManager = new \Said\Projet4blog\Model\CommentManager();
+        $deleteComments = $commentManager->deleteCommArt($id);
     	header('location: index.php?action=dashboard');
     }
 
@@ -90,7 +92,7 @@ class ControllerBack{
     }
 
     public function deleteComment($id){
-    	$commentManager = new \Said\Projet4blog\Model\CommentManager();;
+    	$commentManager = new \Said\Projet4blog\Model\CommentManager();
     	$delComm= $commentManager->deleteComm($id);
 
     		header('location: index.php?action=toCommControl');

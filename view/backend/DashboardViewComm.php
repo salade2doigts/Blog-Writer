@@ -24,9 +24,9 @@ require('view/frontend/header.php');
 </header>
 
 <div class="container">
-<button class="btn btn-info btn-lg btn-block"><a href='index.php?action=dashboard'>Gestion des articles</a></button><br>
+<button class="btn btn-info btn-lg btn-block "><a class="text-white" href='index.php?action=dashboard'>Gestion des articles</a></button><br>
 <div>
- <h3>Commentaires signalés</h3>
+ <h3 class='bg-danger'>Commentaires signalés</h3>
 
 <?php
 while ($commentR = $commentsReport->fetch())
@@ -36,7 +36,6 @@ while ($commentR = $commentsReport->fetch())
 <p><strong><?= htmlspecialchars($commentR['pseudo']) ?></strong></p>
      le <?= $commentR['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($commentR['comment'])) ?></p>
-    <p><?= nl2br(htmlspecialchars($commentR['id'])) ?></p>
     <a href="index.php?action=delComm&amp;id=<?= $commentR['id'] ?>">Supprimer le commentaire</a>
     </div>
 
@@ -47,7 +46,7 @@ while ($commentR = $commentsReport->fetch())
 </div>
 
 <div>
-<h3>Autres Commentaires</h3>
+<h3 class='bg-primary'>Autres Commentaires</h3>
   
 <?php
 while ($comment = $commentsB->fetch())

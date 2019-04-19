@@ -1,5 +1,10 @@
 
 <style type="text/css"> 
+    footer{
+      padding: 0;
+     float: bottom;
+     margin-top: 150px;
+    }
     footer .container{ 
     display: flex;
     align-items: center;
@@ -7,6 +12,7 @@
     padding: 5em 0;
     color: white;
     height: 200px;
+    float: bottom;
     }
 
     footer img{

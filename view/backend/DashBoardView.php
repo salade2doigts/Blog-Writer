@@ -22,7 +22,7 @@ require('view/frontend/header.php');
 
 <div class="container">
 
-    <button class="btn btn-info btn-lg btn-block"><a href='index.php?action=toCommControl'>Modérations des Commentaires</a></button><br>
+    <button class="btn btn-info btn-lg btn-block"><a class="text-white" href='index.php?action=toCommControl'>Modérations des Commentaires</a></button><br>
     <button class="btn btn-primary" id="addart"><a href="index.php?action=toAddPost">Ajouter un article</a></button>
 
 

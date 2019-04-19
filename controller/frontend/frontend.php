@@ -96,8 +96,9 @@ class ControllerFront{
 
         $commentManager = new \Said\Projet4blog\Model\CommentManager();
         $report = $commentManager->reportComm($id);
-
+       
         header('location:index.php?action=post&id=' . $postId);
+      
     }
 
 }

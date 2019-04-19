@@ -1,14 +1,23 @@
 <?php $title = htmlspecialchars($post['title']); 
-require('header.php');
+
 
 ?>
 
-<?php ob_start(); ?>
-<p><a href="index.php">Retour à la liste des billets</a></p>
+<?php ob_start(); 
+require('header.php');
+?>
+
+<p id="signConfMess" class="bg-success">Le commentaire a bien été signalé!</p>
+<header class="text-black headerPost">
+    <div class="container text-center">
+      <h2> <?= htmlspecialchars($post['title']) ?></h2>
+      <p class="lead">Article</p>
+    </div>
+</header>
+<a class='text-white' href="index.php"><p class="bg-primary pPost"><i class="fas fa-arrow-left fa-2x"></i></p></a>
 
 <div class="news">
     <h3>
-        <?= htmlspecialchars($post['title']) ?>
         <em>le <?= $post['creation_date_fr'] ?></em>
     </h3>
     
@@ -43,13 +52,25 @@ while ($comment = $comments->fetch())
 <p><strong><?= htmlspecialchars($comment['pseudo']) ?></strong></p>
      le <?= $comment['comment_date_fr'] ?></p>
     <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
-    <a class="btn btn-danger" href="index.php?action=signal&amp;id=<?=$post['id']?>&amp;idComm=<?=$comment['id']?>">Signaler<a> <p id="infoMdp"></p>
+    <a class="btn btn-danger" id="report" href="index.php?action=signal&amp;id=<?=$post['id']?>&amp;idComm=<?=$comment['id']?>">Signaler<a> 
 
   
 <?php
 }
 
-?></div> <?php
+?></div> 
+
+<script type="text/javascript">
+var report = document.getElementById('report');   
+report.onclick = function() {
+
+        document.getElementById("signConfMess").style.display = block;
+        console.log('click');
+
+        e.preventDefault();
+    };   </script>
+
+<?php
 $content = ob_get_clean(); 
 
  require('template.php');
