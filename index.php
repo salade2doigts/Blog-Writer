@@ -134,5 +134,5 @@ try { // On essaie de faire des choses
 }
 catch(Exception $e) { // S'il y a eu une erreur, alors...
     echo 'Erreur : ' . $e->getMessage();
-   // require('view/errorView.php');  Bon là je vous laisse travailler la vue vous-mêmes, je pense que vous avez compris le concept !
+   require('view/errorView.php'); 
 }
