@@ -120,6 +120,10 @@ try { // On essaie de faire des choses
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
                 
+        }elseif($_GET['action'] == 'registConf'){
+            $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
+            $registConf= $controllerFront->registConf();
+            
         }else{
             // Autre exception
             throw new Exception('Erreur');

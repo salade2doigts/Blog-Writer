@@ -89,8 +89,14 @@ class ControllerFront{
         }
 
         require('view/frontend/registerView.php');
+
+        header('location:index.php?action=registConf');
     }
 
+    public function registConf(){
+
+         require('view/frontend/registConfirmView.php');
+    }
 
     public function signalComm($postId,$id){
 
