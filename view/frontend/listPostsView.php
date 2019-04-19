@@ -25,9 +25,9 @@ while ($data = $posts->fetch())
             <h2 class="card-title font-weight-bold">
                 <?= htmlspecialchars($data['title']) ?></h2>
                 
-            </h3>
+          
             <div id="card-texto">
-            <p class="card-text" >
+            <p class="card-text text-justify" >
                 <?= html_entity_decode(nl2br(htmlspecialchars($data['post']))) ?>
           
                 <a class="btn btn-primary" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite...</a>

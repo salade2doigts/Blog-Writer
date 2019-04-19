@@ -16,12 +16,12 @@ require('header.php');
 </header>
 <a class='text-white' href="index.php"><p class="bg-primary pPost"><i class="fas fa-arrow-left fa-2x"></i></p></a>
 
-<div class="news">
-    <h3>
+<div class="news card">
+    <h2 class='card-title dateArt'>
         <em>le <?= $post['creation_date_fr'] ?></em>
-    </h3>
+    </h2>
     
-    <p>
+    <p class='card-text'>
         <?= html_entity_decode(nl2br(htmlspecialchars($post['post']))) ?>
     </p>
 </div>
