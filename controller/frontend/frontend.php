@@ -9,17 +9,17 @@ require_once('model/ConnectManager.php');
 class ControllerFront{
 
 
-    public function listPosts()
-    {
+  public function listPosts()
+  {
         $postManager = new \Said\Projet4blog\Model\PostManager();; // Création d'un objet
         $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
         require('view/frontend/listPostsView.php');
 
-    }
+      }
 
 
-    public function post()
-    {
+      public function post()
+      {
         $postManager = new \Said\Projet4blog\Model\PostManager();;
         $commentManager = new \Said\Projet4blog\Model\CommentManager();
 
@@ -29,82 +29,81 @@ class ControllerFront{
 
         require('view/frontend/postView.php');
         
-    }
+      }
 
-    public function addComment($postId, $authorId, $comment)
-    {
-        $commentManager = new \Said\Projet4blog\Model\CommentManager();
+      public function addComment($postId, $authorId, $comment)
+      {	
+      	$spaceVerif = trim($comment);
+      	if (empty($spaceVerif)) {
+          echo 'le commentaire ne peut être posté vide';
+        }else{
+          $commentManager = new \Said\Projet4blog\Model\CommentManager();
 
-        $affectedLines = $commentManager->postComment($postId, $authorId, $comment);
+          $toEmpty = trim($comment);
+          $affectedLines = $commentManager->postComment($postId, $authorId, $toEmpty);
 
-        if ($affectedLines === false) {
+          if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
-           
-        }else {
+
+          }else{
             header('Location: index.php?action=post&id=' . $postId);
+          }
         }
-    }
+      }
 
 
     public function connectPage(){ //page de connexion
 
 
-            require('view/frontend/connectView.php');
+      require('view/frontend/connectView.php');
 
     }
 
     public function authentification($pass,$pseudo){
 
-        $connectManager = new \Said\Projet4blog\Model\ConnectManager();
+      $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
-       
-        $authentificationtest = $connectManager->connexion($pass, $pseudo);
-        
+      
+      $authentificationtest = $connectManager->connexion($pass, $pseudo);
+      
 
-        if($authentificationtest){
-            header('location: index.php');
-            echo 'Vous êtes connecté !';
-        }
+      if($authentificationtest){
+        header('Location: ./index.php');
+           
+      }
 
-        
+      
 
-        require('view/frontend/connectView.php');
+      require('view/frontend/connectView.php');
     }
 
     public function registeringBoard(){
 
-        require('view/frontend/registerView.php');
+      require('view/frontend/registerView.php');
 
     }
 
     public function registeringProcess($pseudo,$pass){
 
-        $connectManager = new \Said\Projet4blog\Model\ConnectManager();
+      $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
-        $registerSet= $connectManager->registering($pseudo,$pass);
+      $registerSet= $connectManager->registering($pseudo,$pass);
 
-        if($registerSet){
-            echo "enregistrement confirmé";
-           
-        }
+      if($registerSet){
+        header('Location: ./index.php?action=registConf');
+      }
 
-        require('view/frontend/registerView.php');
-
-        header('location:index.php?action=registConf');
+      require('view/frontend/registConfirmView.php');
     }
 
-    public function registConf(){
-
-         require('view/frontend/registConfirmView.php');
-    }
 
     public function signalComm($postId,$id){
 
-        $commentManager = new \Said\Projet4blog\Model\CommentManager();
-        $report = $commentManager->reportComm($id);
-       
-        header('location:index.php?action=post&id=' . $postId);
+      $commentManager = new \Said\Projet4blog\Model\CommentManager();
+      $report = $commentManager->reportComm($id);
+      
+      header('Location: ./index.php?action=post&id=' . $postId);
       
     }
 
-}
+  }

@@ -3,11 +3,16 @@ h1, h3 ,.dateArt
     text-align:center;
 }
 
+.inputEmail {
+  padding:.75rem;
+}
 
 .news
 {
     width:70%;
     margin:auto;
+  	padding: 45px;
+  	text-align: justify;
 }
 .news .card-title{
 
@@ -19,10 +24,6 @@ a
     color: blue;
 }
 
-:root {
-  --input-padding-x: 1.5rem;
-  --input-padding-y: .75rem;
-}
 
 header {
     padding: 156px 0 100px;
@@ -39,7 +40,7 @@ header {
     margin-left: auto;
 }
 
-#card-texto:nth-child(2n){
+.card-texto:nth-child(2n){
 
   display: block;
   width: 95%;
@@ -89,10 +90,6 @@ header {
   border-radius: 2rem;
 }
 
-.form-label-group>input,
-.form-label-group>label {
-  padding: var(--input-padding-y) var(--input-padding-x);
-}
 
 .form-label-group>label {
   position: absolute;
@@ -129,17 +126,6 @@ header {
   color: transparent;
 }
 
-.form-label-group input:not(:placeholder-shown) {
-  padding-top: calc(var(--input-padding-y) + var(--input-padding-y) * (2 / 3));
-  padding-bottom: calc(var(--input-padding-y) / 3);
-}
-
-.form-label-group input:not(:placeholder-shown)~label {
-  padding-top: calc(var(--input-padding-y) / 3);
-  padding-bottom: calc(var(--input-padding-y) / 3);
-  font-size: 12px;
-  color: #777;
-}
 
 .formadm{
 
@@ -297,11 +283,22 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
+   h1{
+  	color: white;
+   }
   .notfound .notfound-404 {
     height: 200px;
   }
   .notfound .notfound-404 h1 {
     font-size: 200px;
+  }
+  
+  header{
+  background-size : cover;
+  }
+  
+  .lead{
+  	color: white;
   }
 }
 
@@ -317,4 +314,19 @@ body {
   .notfound h2 {
     font-size: 16px;
   }
+  
+  h1{
+  	color: white;
+  }
+}
+
+h4{
+
+  margin-top: 10px;
+}
+
+
+.card-text{
+ 	padding : 15px; 
+  	font-size : 16px;
 }

@@ -6,28 +6,28 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
 
     ?>
     <style type="text/css">
-        .formadm{
-            margin-top: 70px;
-        }
+      .formadm{
+        margin-top: 70px;
+      }
     </style>
 
     <div class="container">
 
-    <?php ob_start(); ?>
+      <?php ob_start(); ?>
 
-    <form class="formadm" action="index.php?action=modifPost&amp;id=<?= $post['id'] ?>" method="POST" >
+      <form class="formadm" action="index.php?action=modifPost&amp;id=<?= $post['id'] ?>" method="POST" >
 
-      <p class="font-weight-bold" >Titre de l'article :</p>
-      <input type="text" value= '<?php echo htmlspecialchars($post['title']) ?>' name='title' required>
-      <p class="font-weight-bold" >Contenu :</p>
-      <textarea name="editor_content" id="mytextarea">
-      	  
-            <?= nl2br(htmlspecialchars($post['post'])) ?>
-       
-      </textarea>
-      <button>Valider la modification</button>
-    </form>
-     </div>
+        <p class="font-weight-bold" >Titre de l'article :</p>
+        <input type="text" value= '<?php echo htmlspecialchars($post['title']) ?>' name='title' required>
+        <p class="font-weight-bold" >Contenu :</p>
+        <textarea name="editor_content" id="mytextarea">
+         
+          <?= nl2br(htmlspecialchars($post['post'])) ?>
+          
+        </textarea>
+        <button>Valider la modification</button>
+      </form>
+    </div>
 
     <?php $content = ob_get_clean(); ?>
 
@@ -35,13 +35,13 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
   }else{
     echo 'Oups! Il semble que vous vous êtes égarés';
   }
- 
+  
 }else{
 
   
-?>
+  ?>
   <div>Oups! Il semble que vous vous êtes égarés</div>
 
-<?php  
+  <?php  
 }
 ?>

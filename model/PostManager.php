@@ -25,14 +25,7 @@ class PostManager extends Manager
 
         return $post;
     }
-    /*
-    public function updateComm($comment,$id){
-        $db = $this->dbConnect();
-        $comments = $db->prepare('UPDATE comments SET comment = ? WHERE id= ?');
-        $modifComm = $comments->execute(array($comment,$id));
-        return $modifComm;
 
-    }*/
 
     public function updatePost($post,$title,$id){
         $db = $this->dbConnect();

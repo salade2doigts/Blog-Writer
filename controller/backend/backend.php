@@ -25,7 +25,7 @@ class ControllerBack{
     public function edition($id)
     {
         $postManager2 = new \Said\Projet4blog\Model\PostManager();
-     
+        
         $post = $postManager2->getPost($id);
 
         require('view/backend/EditorView.php');
@@ -34,7 +34,7 @@ class ControllerBack{
     public function addPostEditor($id)
     {
         $postManager2 = new \Said\Projet4blog\Model\PostManager();
-     
+        
         $post = $postManager2->getPost($id);
 
         require('view/backend/AddEditorView.php');
@@ -48,8 +48,8 @@ class ControllerBack{
             throw new Exception('Impossible de modifier l\'article !');
         }
         else {
-        echo 'Article modifié';
-        header('location: index.php?action=dashboard');
+            
+            header('Location: index.php?action=dashboard');
         }
 
 
@@ -67,7 +67,7 @@ class ControllerBack{
     	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$upPost = $PostManager->addPost($title,$post);
 
-    	header('location: index.php?action=dashboard');
+    	header('Location: index.php?action=dashboard');
     }
 
     public function deleteArticle($id){
@@ -76,11 +76,17 @@ class ControllerBack{
         
         $commentManager = new \Said\Projet4blog\Model\CommentManager();
         $deleteComments = $commentManager->deleteCommArt($id);
-    	header('location: index.php?action=dashboard');
+        header('Location: index.php?action=dashboard');
     }
 
+    public function deleteComment($id){
+    	$commentManager = new \Said\Projet4blog\Model\CommentManager();
+    	$delComm= $commentManager->deleteComm($id);
 
+    	header('Location: index.php?action=toCommControl');
+    }
 
+    
     public function listComms(){
 
     	$commentManager = new \Said\Projet4blog\Model\CommentManager();
@@ -91,11 +97,6 @@ class ControllerBack{
         
     }
 
-    public function deleteComment($id){
-    	$commentManager = new \Said\Projet4blog\Model\CommentManager();
-    	$delComm= $commentManager->deleteComm($id);
-
-    		header('location: index.php?action=toCommControl');
-    }
+    
 
 }
