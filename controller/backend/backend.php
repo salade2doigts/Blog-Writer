@@ -7,14 +7,14 @@ require_once('model/CommentManager.php');
 
 class ControllerBack{
 
-    public function listPostsBoard()
+    public function dashBoard()
     {
         $postManager = new \Said\Projet4blog\Model\PostManager(); // Création d'un objet
         $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
         require('view/backend/DashBoardView.php');
     }
 
-    public function getPostBoard($id)
+    public function modifArt($id)
     {
         $postManager = new \Said\Projet4blog\Model\PostManager(); // Création d'un objet
         $post = $postManager->getPost($id); // Appel d'une fonction de cet objet
@@ -40,7 +40,7 @@ class ControllerBack{
         require('view/backend/AddEditorView.php');
     }
 
-    public function PostModifConfirm($post,$title,$id){
+    public function modifPost($post,$title,$id){
         $PostManager = new \Said\Projet4blog\Model\PostManager();
         $UpPost = $PostManager->updatePost($post,$title,$id);
         
@@ -56,13 +56,13 @@ class ControllerBack{
 
     }
 
-    public function addArticleEditor(){
+    public function toAddPost(){
 
 
     	require('view/backend/AddEditorView.php');
     }
 
-    public function AddArticleConfirm($title,$post){
+    public function addPostConfirm($title,$post){
 
     	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$upPost = $PostManager->addPost($title,$post);
@@ -70,7 +70,7 @@ class ControllerBack{
     	header('Location: index.php?action=dashboard');
     }
 
-    public function deleteArticle($id){
+    public function deletArt($id){
     	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$delPost= $PostManager->deletePost($id);
         
@@ -79,7 +79,7 @@ class ControllerBack{
         header('Location: index.php?action=dashboard');
     }
 
-    public function deleteComment($id){
+    public function delComm($id){
     	$commentManager = new \Said\Projet4blog\Model\CommentManager();
     	$delComm= $commentManager->deleteComm($id);
 
@@ -87,7 +87,7 @@ class ControllerBack{
     }
 
     
-    public function listComms(){
+    public function toCommControl(){
 
     	$commentManager = new \Said\Projet4blog\Model\CommentManager();
         $commentsReport = $commentManager->getCommentsReportBoard();
