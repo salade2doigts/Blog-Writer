@@ -52,14 +52,14 @@ class ControllerFront{
       }
 
 
-    public function connectPage(){ //page de connexion
+    public function toConnect(){ //page de connexion
 
 
       require('view/frontend/connectView.php');
 
     }
 
-    public function authentification($pass,$pseudo){
+    public function connect($pass,$pseudo){
 
       $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
@@ -68,22 +68,20 @@ class ControllerFront{
       
 
       if($authentificationtest){
-        header('Location: ./index.php');
+        return header('Location: ./index.php');
            
       }
-
-      
 
       require('view/frontend/connectView.php');
     }
 
-    public function registeringBoard(){
+    public function toRegister(){
 
       require('view/frontend/registerView.php');
 
     }
 
-    public function registeringProcess($pseudo,$pass){
+    public function register($pseudo,$pass){
 
       $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
@@ -97,7 +95,7 @@ class ControllerFront{
     }
 
 
-    public function signalComm($postId,$id){
+    public function signal($postId,$id){
 
       $commentManager = new \Said\Projet4blog\Model\CommentManager();
       $report = $commentManager->reportComm($id);
