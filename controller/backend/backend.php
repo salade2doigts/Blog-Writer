@@ -40,37 +40,34 @@ class ControllerBack{
         require('view/backend/AddEditorView.php');
     }
 
-    public function PostModifConfirm($post,$title,$id){
+    public function PostModifConfirm($post,$title,$id)
+    {
         $PostManager = new \Said\Projet4blog\Model\PostManager();
         $UpPost = $PostManager->updatePost($post,$title,$id);
         
         if ($UpPost === false) {
             throw new Exception('Impossible de modifier l\'article !');
         }
-        else {
-            
+        else {            
             header('Location: index.php?action=dashboard');
         }
-
-
-
     }
 
-    public function addArticleEditor(){
-
-
+    public function addArticleEditor()
+    {
     	require('view/backend/AddEditorView.php');
     }
 
-    public function AddArticleConfirm($title,$post){
-
+    public function AddArticleConfirm($title,$post)
+    {
     	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$upPost = $PostManager->addPost($title,$post);
 
     	header('Location: index.php?action=dashboard');
     }
 
-    public function deleteArticle($id){
+    public function deleteArticle($id)
+    {
     	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$delPost= $PostManager->deletePost($id);
         
@@ -79,7 +76,8 @@ class ControllerBack{
         header('Location: index.php?action=dashboard');
     }
 
-    public function deleteComment($id){
+    public function deleteComment($id)
+    {
     	$commentManager = new \Said\Projet4blog\Model\CommentManager();
     	$delComm= $commentManager->deleteComm($id);
 
@@ -87,16 +85,12 @@ class ControllerBack{
     }
 
     
-    public function listComms(){
-
+    public function listComms()
+    {
     	$commentManager = new \Said\Projet4blog\Model\CommentManager();
         $commentsReport = $commentManager->getCommentsReportBoard();
         $commentsB = $commentManager->getCommentsBoard();
         
-        require('view/backend/DashBoardViewComm.php');
-        
-    }
-
-    
-
+        require('view/backend/DashBoardViewComm.php');      
+    }    
 }
