@@ -11,14 +11,15 @@ require_once('model/Router/Router.php');
 
     $routeur->get('/', function () { 
         $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->listPosts();;
+        $controllerFront->listPosts();
     });
+    
     $routeur->get('/posts', function () { echo 'super';
     });
 
-    $routeur->get('/post/:id', function () {
+    $routeur->get('/post/:id', function ($id) {
         $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->post();
+        $controllerFront->post($id);
     });
 
     

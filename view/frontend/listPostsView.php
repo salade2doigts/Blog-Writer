@@ -30,7 +30,7 @@ require('header.php'); ?>
                         <p class="card-text text-justify" >
                             <?= html_entity_decode(nl2br(htmlspecialchars($data['post']))) ?>
                        	<p>     
-                            <a class="btn btn-primary" href="index.php?action=post&amp;id=<?= $data['id'] ?>">Lire la suite...</a>
+                            <a class="btn btn-primary" href="./post/<?= $data['id'] ?>">Lire la suite...</a>
                         </p>
                         
                     </div>
