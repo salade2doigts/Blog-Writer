@@ -1,4 +1,5 @@
 <?php
+
 namespace Said\Projet4blog\controller\frontend;
 
 // Chargement des classes
@@ -6,90 +7,91 @@ require_once('model/PostManager.php');
 require_once('model/CommentManager.php');
 require_once('model/ConnectManager.php');
 
-class ControllerFront{
-  
+class ControllerFront
+{
+
   public function listPosts()
   {
-      $postManager = new \Said\Projet4blog\Model\PostManager();; // Création d'un objet
-      $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
-      require('view/frontend/listPostsView.php');
+    $postManager = new \Said\Projet4blog\Model\PostManager();; // Création d'un objet
+    $posts = $postManager->getPosts(); // Appel d'une fonction de cet objet
+    require('view/frontend/listPostsView.php');
   }
 
-  public function post()
+
+  public function post($id)
   {
-      $postManager = new \Said\Projet4blog\Model\PostManager();;
+    $postManager = new \Said\Projet4blog\Model\PostManager();;
+    $commentManager = new \Said\Projet4blog\Model\CommentManager();
+    $post = $postManager->getPost($id);
+    $comments = $commentManager->getComments($id);
+    require('view/frontend/postView.php');
+  }
+
+  public function addComment($id)
+  {
+    
+    $spaceVerif = trim($_POST['comment']);
+    if (empty($spaceVerif)) {
+      echo 'le commentaire ne peut être posté vide';
+    } else {
       $commentManager = new \Said\Projet4blog\Model\CommentManager();
 
-      $post = $postManager->getPost($_GET['id']);
-      $comments = $commentManager->getComments($_GET['id']);
+      $toEmpty = trim($_POST['comment']);
+      $affectedLines = $commentManager->postComment($_POST['postId'], $_SESSION['id'], $toEmpty);
 
-      require('view/frontend/postView.php');
-  }
-
-  public function addComment($postId, $authorId, $comment)
-  {	
-      $spaceVerif = trim($comment);
-      
-      if (empty($spaceVerif)) {
-        echo 'le commentaire ne peut être posté vide';
-      }else{
-      
-        $commentManager = new \Said\Projet4blog\Model\CommentManager();
-
-        $toEmpty = trim($comment);
-        $affectedLines = $commentManager->postComment($postId, $authorId, $toEmpty);
-
-        if ($affectedLines === false) {
-          throw new Exception('Impossible d\'ajouter le commentaire !');
-
-        }else{
-          header('Location: index.php?action=post&id=' . $postId);
-        }
+      if ($affectedLines === false) {
+        throw new Exception('Impossible d\'ajouter le commentaire !');
+      } else {
+        header('Location: index.php?action=post&id=' . $_GET['id']);
       }
-  }
-  
-  /*page de connexion*/
-  public function connectPage()
-  { 
-      require('view/frontend/connectView.php');
+    }
   }
 
-  public function authentification($pass,$pseudo)
+
+  public function connect()
+  { //page de connexion
+    require('view/frontend/connectView.php');
+  }
+
+  public function connecting()
   {
-      $connectManager = new \Said\Projet4blog\Model\ConnectManager();
+    
+    $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
-      $authentificationtest = $connectManager->connexion($pass, $pseudo);  
-      
-      if($authentificationtest){
-        header('Location: ./index.php');
-      }
-      require('view/frontend/connectView.php');
+    $authentificationtest = $connectManager->connexion($_POST['pass'], $_POST['pseudo']);
+
+    if ($authentificationtest) {
+      return header('Location: http://localhost:8080/BlogRouteur/');
+    }
+    require('view/frontend/connectView.php');
   }
 
-  public function registeringBoard()
+  public function register()
   {
+
     require('view/frontend/registerView.php');
   }
 
-  public function registeringProcess($pseudo,$pass)
+  public function registering($tabPassPseudo)
   {
+    extract($tabPassPseudo);
+
     $connectManager = new \Said\Projet4blog\Model\ConnectManager();
 
-    $registerSet= $connectManager->registering($pseudo,$pass);
+    $registerSet = $connectManager->registering($_POST['pseudoreg'], $_POST['passreg']);
 
-    if($registerSet){
+    if ($registerSet) {
       header('Location: ./index.php?action=registConf');
     }
-
     require('view/frontend/registConfirmView.php');
   }
 
-
-  public function signalComm($postId,$id)
+  public function signal($postIdCom)
   {
+    extract($postIdCom);
     $commentManager = new \Said\Projet4blog\Model\CommentManager();
-    $report = $commentManager->reportComm($id);
+    $report = $commentManager->reportComm($_GET['idComm']);
 
-    header('Location: ./index.php?action=post&id=' . $postId);    
+    header('Location: ./index.php?action=post&id=' . $_GET['id']);
   }
 }

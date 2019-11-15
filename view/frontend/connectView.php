@@ -15,7 +15,7 @@ ob_start();?>
     <div class="card card-signin my-5">
       <div class="card-body">
         <h5 class="card-title text-center">Connectez vous</h5>
-        <form class="form-signin" action="index.php?action=connect" method="post">
+        <form class="form-signin" action="connecting" method="post" href="/connecting">
           <div class="form-label-group">
             <input type="text" id="inputEmail" class="form-control" placeholder="Email address" name="pseudo" required autofocus>
             <label for="inputEmail">Pseudo</label>
