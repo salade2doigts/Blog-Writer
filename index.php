@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once('controller/frontend/frontend.php');
-require_once('controller/backend/backend.php');
+require_once('controller/frontend/FrontendController.php');
+require_once('controller/backend/BackendController.php');
 require_once('model/Router/Router.php');
 
 
@@ -10,21 +10,16 @@ require_once('model/Router/Router.php');
   
 
     $routeur->get('/', function () { 
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->listPosts();
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->posts();
     });
 
     $routeur->get('/posts', function () { echo 'super';
     });
 
     $routeur->get('/post/:id', function ($id) {
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->post($id);
-    });
-
-    $routeur->get('/dashboard',function () {
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->dashboard();
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->post($id);
     });
 
     $routeur->get('/disconnect',function () {
@@ -34,23 +29,44 @@ require_once('model/Router/Router.php');
     });
 
     $routeur->get('/connect',function () {
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->connect();
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->connect();
     });
 
     $routeur->get('/register',function () {
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->register();
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->register();
     });
 
     $routeur->post('/connecting',function () {
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->connecting();
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->connecting();
+    });
+
+    $routeur->post('/registering',function () {
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->registering();
     });
 
     $routeur->post('/addComment/:id',function ($id) {
-        $controllerFront = new \Said\Projet4blog\controller\frontend\ControllerFront();
-        $controllerFront->addComment($id);
+        $front = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->addComment($id);
+    });
+    ///////////////////////////////BACKEND
+
+    $routeur->get('/dashboard',function () {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->dashboard();
     });
     
+    $routeur->get('/updatePost/:id',function ($id) {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->updatePost($id);
+    });
+
+    $routeur->get('/deletePost/:id',function ($id) {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->deletePost($id);
+    });
+
     $routeur->run();
