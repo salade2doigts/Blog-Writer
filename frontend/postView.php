@@ -31,7 +31,7 @@ require('header.php');
     <h2>Commentaires</h2>
 
     <?php if (isset($_SESSION['pseudo']) && isset($_SESSION['id'])) {  ?>
-        <form onsubmit="return validateComm()" href="./addComment/<?= $post['id'] ?>" action="./addComment/<?= $post['id'] ?>" method="post">
+        <form onsubmit="return validateComm()" href="/addComment/<?= $post['id'] ?>" action="/addComment/<?= $post['id'] ?>" method="post">
 
             <div>
                 <label for="comment">Commentaire</label><br />
@@ -56,10 +56,10 @@ require('header.php');
             <p class="card-text"><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
             <?php if (isset($_SESSION['pseudo']) && isset($_SESSION['id'])) {
                     if ($comment['report'] == 1) { ?>
-                    <a class="btn btn-danger" id="report" href="../signal/<?= $comment['id'] ?>"><i class="fas fa-exclamation-triangle"></i>Ce commentaire a été signalé</a>
+                    <a class="btn btn-danger" id="report" href="./post/<?= $post['id'] ?>/<?= $comment['id'] ?>"><i class="fas fa-exclamation-triangle"></i>Ce commentaire a été signalé</a>
                 <?php
                         } else { ?>
-                    <a class="btn btn-warning" id="report" href="../signal/<?= $comment['id'] ?>">Signaler</a> 
+                    <a class="btn btn-warning" id="report" href="./post/<?= $post['id'] ?>/<?= $comment['id'] ?>"">Signaler</a> 
             <?php }
                 }
                 ?>

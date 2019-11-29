@@ -1,4 +1,4 @@
-  
+ 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
   <div class="container">
@@ -16,18 +16,18 @@
         <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  
           if( $_SESSION['role'] == 1 ){  ?>
             <li class="nav-item">
-              <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/dashboard">Administration</a>
+              <a class="nav-link" href="./dashboard">Administration</a>
             </li>
           <?php } ?>
           <li class="nav-item">
-            <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/disconnect">Deconnexion</a>    
+            <a class="nav-link" href="./disconnect">Deconnexion</a>    
           </li>
         <?php }elseif(!isset($_SESSION['pseudo'])&&!isset($_SESSION['id'])){ ?>
           <li class="nav-item">
-            <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/connect">Connexion</a>
+            <a class="nav-link" href="./connect">Connexion</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/register">Inscription</a>
+            <a class="nav-link" href="./register">Inscription</a>
           </li>
           <?php
         }
