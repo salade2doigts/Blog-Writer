@@ -48,9 +48,13 @@ require_once('model/Router/Router.php');
         $front->registering();
     });
 
-    $routeur->post('/addComment/:id',function ($id) {
+    $routeur->post('post/addComment/:id',function ($id) {
         $front = new \Said\Projet4blog\controller\frontend\FrontendController();
         $front->addComment($id);
+    });
+    $routeur->get('/signal/:id',function ($id) {
+        $front  = new \Said\Projet4blog\controller\frontend\FrontendController();
+        $front->signal($id);
     });
     ///////////////////////////////BACKEND
 
@@ -68,5 +72,17 @@ require_once('model/Router/Router.php');
         $backend = new \Said\Projet4blog\controller\backend\BackendController();
         $backend->deletePost($id);
     });
+
+    $routeur->get('/createPage',function () {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->createPage();
+    });
+
+    $routeur->get('/addPost',function () {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->addPost();
+    });
+
+   
 
     $routeur->run();

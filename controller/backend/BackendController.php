@@ -32,9 +32,8 @@ class BackendController{
         require('view/backend/EditorView.php');
     }
 
-    public function addPostEditor($id)
+    public function addPost()
     {       
-        extract($id);
         $postManager2 = new \Said\Projet4blog\Model\PostManager();
         
         $post = $postManager2->getPost($_GET['id']);
@@ -56,7 +55,7 @@ class BackendController{
         }
     }
 
-    public function toAddPost(){
+    public function createPage(){
 
 
     	require('view/backend/AddEditorView.php');

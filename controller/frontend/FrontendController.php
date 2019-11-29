@@ -37,12 +37,12 @@ class FrontendController
       $commentManager = new \Said\Projet4blog\Model\CommentManager();
 
       $toEmpty = trim($_POST['comment']);
-      $affectedLines = $commentManager->postComment($_POST['postId'], $_SESSION['id'], $toEmpty);
+      $affectedLines = $commentManager->postComment($id, $_SESSION['id'], $toEmpty);
 
       if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
       } else {
-        header('Location: index.php?action=post&id=' . $_GET['id']);
+        header('Location: http://localhost:8080/BlogRouteur/post/' . $id);
       }
     }
   }
@@ -84,12 +84,12 @@ class FrontendController
     require('view/frontend/registConfirmView.php');
   }
 
-  public function signal($postIdCom)
+  public function signal($id)
   {
-    extract($postIdCom);
+    
     $commentManager = new \Said\Projet4blog\Model\CommentManager();
-    $report = $commentManager->reportComm($_GET['idComm']);
-
-    header('Location: ./index.php?action=post&id=' . $_GET['id']);
+    $report = $commentManager->reportComm($id);
+    header('Location: ' . $_SERVER["HTTP_REFERER"] );
+    exit;
   }
 }

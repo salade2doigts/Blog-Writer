@@ -14,7 +14,7 @@ ob_start(); ?>
     <div class="card card-signin my-5">
       <div class="card-body">
         <h5 class="card-title text-center">Enregistrez vous</h5>
-        <form id="formreg" class="form-signin" onsubmit="return validateForm()" action="index.php?action=register" method="post">
+        <form id="formreg" class="form-signin" onsubmit="return validateForm()" href="/registering" action="registering" method="post">
           <div class="form-label-group">
             <input type="text" id="inputPseudo" class="form-control" placeholder="Pseudo" name="pseudoreg" required autofocus>
             <label for="inputPseudo">Pseudo</label>

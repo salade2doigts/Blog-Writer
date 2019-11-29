@@ -23,7 +23,7 @@ $title = 'Connexion';
 <?php ob_start();?>
 
 <div id="confirm"><p>Votre compte a été enregistré avec succès. Vous pouvez désormais vous connecter et poster des commentaires.</p><div>
-	<a href="index.php" class="btn btn-litgh bg-light">Retour à l'accueil</a><br>
-	<a id="btn2" href="index.php?action=toConnect" class="btn btn-litgh bg-light">Page de connexion</a>
+	<a href="http://localhost:8080/BlogRouteur/" class="btn btn-litgh bg-light">Retour à l'accueil</a><br>
+	<a id="btn2" href="connect" class="btn btn-litgh bg-light">Page de connexion</a>
   <?php $content = ob_get_clean();
   require('template.php'); ?>
