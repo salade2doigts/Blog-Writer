@@ -57,7 +57,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
           le <?= $comment['comment_date_fr'] ?></p>
           <p><?= nl2br(htmlspecialchars($comment['comment'])) ?></p>
           <p><?= nl2br(htmlspecialchars($comment['id'])) ?></p>
-          <a href="index.php?action=delComm&amp;id=<?= $comment['id'] ?>">Supprimer le commentaire</a>
+          <a href="./delCom/<?= $commentR['id'] ?>">Supprimer le commentaire</a>
         </div>
 
 
