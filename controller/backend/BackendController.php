@@ -32,26 +32,26 @@ class BackendController{
         require('view/backend/EditorView.php');
     }
 
-    public function addPost()
+    /*public function addPostt($id)
     {       
         $postManager2 = new \Said\Projet4blog\Model\PostManager();
         
         $post = $postManager2->getPost($_GET['id']);
 
         require('view/backend/AddEditorView.php');
-    }
+    }*/
 
-    public function modifPost($postTitleId)
+    public function edit($id)
     {
-        extract($postTitleId);
+        
         $PostManager = new \Said\Projet4blog\Model\PostManager();
-        $UpPost = $PostManager->updatePost($_POST['editor_content'],$_POST['title'],$_GET['id']);
+        $UpPost = $PostManager->updatePost($_POST['editor_content'],$_POST['title'],$id);
         
         if ($UpPost === false) {
             throw new Exception('Impossible de modifier l\'article !');
         }
         else {          
-            header('Location: index.php?action=dashboard');
+            header('Location: ../dashboard');
         }
     }
 
@@ -61,13 +61,13 @@ class BackendController{
     	require('view/backend/AddEditorView.php');
     }
 
-    public function addPostConfirm($titlePost)
+    public function addPost()
     {
 
     	$PostManager = new \Said\Projet4blog\Model\PostManager();
     	$upPost = $PostManager->addPost($_POST['title'],$_POST['add_content']);
 
-    	header('Location: index.php?action=dashboard');
+    	header('Location: ' . $_SERVER["HTTP_REFERER"] );
     }
 
     public function deletePost($id)
@@ -84,11 +84,11 @@ class BackendController{
 
     public function delComm($id)
     {
-        extract($id);
+        
     	$commentManager = new \Said\Projet4blog\Model\CommentManager();
-    	$delComm= $commentManager->deleteComm($_GET['id']);
+    	$delComm= $commentManager->deleteComm($id);
 
-    	header('Location: index.php?action=toCommControl');
+    	header('Location: ' . $_SERVER["HTTP_REFERER"] );
     }
 
     

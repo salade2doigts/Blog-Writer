@@ -24,7 +24,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
     </header>
 
     <div class="container">
-      <button class="btn btn-info btn-lg btn-block "><a class="text-white" href='index.php?action=dashboard'>Gestion des articles</a></button><br>
+      <button class="btn btn-info btn-lg btn-block "><a class="text-white" href='./dashboard'>Gestion des articles</a></button><br>
       <div class="signDash1">
        <h4 class='bg-danger text-white text-center'>Commentaires signalés</h4>
 
@@ -36,7 +36,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
           <p><strong><?= htmlspecialchars($commentR['pseudo']) ?></strong></p>
           le <?= $commentR['comment_date_fr'] ?></p>
           <p><?= nl2br(htmlspecialchars($commentR['comment'])) ?></p>
-          <a href="index.php?action=delComm&amp;id=<?= $commentR['id'] ?>">Supprimer le commentaire</a>
+          <a href="./delCom/<?= $commentR['id'] ?>">Supprimer le commentaire</a>
         </div>
 
 

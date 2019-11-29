@@ -78,11 +78,24 @@ require_once('model/Router/Router.php');
         $backend->createPage();
     });
 
-    $routeur->get('/addPost',function () {
+    $routeur->post('/addPost',function () {
         $backend = new \Said\Projet4blog\controller\backend\BackendController();
         $backend->addPost();
     });
 
-   
+    $routeur->post('/edit/:id',function ($id) {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->edit($id);
+    });
+
+    $routeur->get('/commentsAdministration',function () {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->toCommControl();
+    });
+
+    $routeur->get('/delCom/:id',function ($id) {
+        $backend = new \Said\Projet4blog\controller\backend\BackendController();
+        $backend->delComm($id);
+    });
 
     $routeur->run();

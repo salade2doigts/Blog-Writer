@@ -12,7 +12,7 @@ if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){
     <div class="container">
       <?php ob_start(); ?>
 
-      <form class="formadm" action="../addPost" method="POST" >
+      <form class="formadm" action="./addPost" method="POST" >
         
         <p class="font-weight-bold" >Titre de l'article :</p>
         <input type="text" name="title" required> 

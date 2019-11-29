@@ -16,18 +16,18 @@
         <?php     if(isset($_SESSION['pseudo'])&&isset($_SESSION['id'])){  
           if( $_SESSION['role'] == 1 ){  ?>
             <li class="nav-item">
-              <a class="nav-link" href="<?= "http://" . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'] ?>/dashboard">Administration</a>
+              <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/dashboard">Administration</a>
             </li>
           <?php } ?>
           <li class="nav-item">
-            <a class="nav-link" href="./disconnect">Deconnexion</a>    
+            <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/disconnect">Deconnexion</a>    
           </li>
         <?php }elseif(!isset($_SESSION['pseudo'])&&!isset($_SESSION['id'])){ ?>
           <li class="nav-item">
-            <a class="nav-link" href="./connect">Connexion</a>
+            <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/connect">Connexion</a>
           </li> 
           <li class="nav-item">
-            <a class="nav-link" href="./register">Inscription</a>
+            <a class="nav-link" href="<?= "http://" . $_SERVER['HTTP_HOST'] ?>/BlogRouteur/register">Inscription</a>
           </li>
           <?php
         }
